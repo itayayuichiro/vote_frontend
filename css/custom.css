@@ -1,0 +1,502 @@
+body {
+  margin: 0px;
+}
+.main {
+  padding-bottom: 100px;
+}
+/**共通部分**/.top_image {
+  width: 100%;
+  text-align: center;
+  background: lightgrey;
+}
+.top_image img {
+  width: 50%;
+}
+.top_images a {
+  text-decoration: none;
+}
+.top_images img {
+  opacity: 0;
+  width: 30%;
+  height: 100px;
+}
+.modal {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.modal .recommend {
+  margin: 30px;
+}
+.modal .close {
+  float: right;
+}
+.modal .close img {
+  width: 50px;
+}
+.gacha_page {
+  width: 100%;
+  text-align: center;
+}
+.gacha_page img {
+  width: 100%;
+}
+.gacha_page .gacha_btn {
+  width: 80%;
+  padding: 20px;
+  background-color: red;
+  color: white;
+  font-size: 30px;
+}
+header {
+  background-color: white;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gainsboro;
+}
+header a {
+  position: absolute;
+  vertical-align: middle;
+  margin-left: 20px;
+  margin-top: 5px;
+  text-decoration: none;
+  color: #1ea1f2;
+}
+header img {
+  width: 40%;
+}
+footer {
+  width: 100%;
+  background-color: #f0aa3d;
+  position: fixed;
+  bottom: 0;
+}
+footer .footer_menus {
+  letter-spacing: -1em;
+}
+footer .footer_menu {
+  text-align: center;
+  font-size: 10px;
+  width: 33%;
+  display: inline-block;
+  letter-spacing: 0em;
+  color: white;
+  padding-top: 4px;
+}
+footer .footer_menu img {
+  width: 40%;
+}
+footer .select {
+  background-color: #e74707;
+}
+h3 {
+  border-left: 3px solid orange;
+  margin-left: 5px;
+  padding-left: 5px;
+}
+body {
+  /* ログイン */
+  /* 芸人詳細 */
+  /* 動画詳細 */
+  background-color: #f2f2f2;
+  /* 三角を入れる */
+}
+body .btn {
+  width: 80%;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  margin: 0 auto;
+}
+body .favorite {
+  background-color: #ffcb2b;
+}
+body .register {
+  background-color: #083;
+}
+body .watch {
+  background-color: crimson;
+}
+body .logout {
+  background-color: lightsalmon;
+  margin: 10px;
+}
+body .recommend {
+  text-align: center;
+  margin: 15px;
+  background-color: white;
+  padding: 6px;
+}
+body .recommend .title {
+  font-weight: bold;
+}
+body .recommend .explanation {
+  font-weight: lighter;
+  font-size: 14px;
+}
+body .youtube_frame {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+body .youtube_frame iframe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+body .login {
+  padding-top: 30px;
+  height: 100%;
+  background-color: white;
+  width: 100%;
+  text-align: center;
+}
+body .login .form {
+  width: 80%;
+  margin: 0px auto;
+  margin-top: 20px;
+  text-align: left;
+}
+body .login .form .form_input {
+  color: #636363;
+  margin-top: 20px;
+}
+body .login .form .form_input input {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #d3d3d3;
+  background-color: #e8f0fe;
+}
+body .login .form .link {
+  margin-top: 30px;
+  text-align: center;
+}
+body .login .form .form_submit {
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+  height: 50px;
+  border-radius: 50px;
+  background-color: red;
+  margin-top: 40px;
+}
+body .login .form .form_submit input {
+  height: 100%;
+  margin: 0px auto;
+  vertical-align: middle;
+  color: white;
+  font-size: 18px;
+  background-color: red;
+  border: 0px;
+}
+body .login .form .twitter {
+  background-color: #00a4d3;
+}
+body .login .form .signup {
+  background-color: black;
+}
+body .login .form .signup input {
+  background-color: black;
+  border: 0px;
+}
+body .comedian_profile {
+  background-color: white;
+}
+body .comedian_profile .background {
+  width: 100%;
+  height: 100px;
+  background-size: cover;
+  background-position: center center;
+}
+body .comedian_profile .profile_block {
+  position: absolute;
+  top: 100px;
+}
+body .comedian_profile .profile_block img {
+  background-color: white;
+  margin: 0px 0px 0px 20px;
+  border-radius: 50%;
+  border: 3px solid white;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+body .comedian_profile .profile_text {
+  margin: 0px 5px 0px 5px;
+  text-align: right;
+}
+body .comedian_profile .profile_text input {
+  margin: 20px 20px 0px 20px;
+  width: 40%;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 20px;
+  border: 1px solid white;
+  text-align: center;
+  background-color: #fc6245;
+}
+body .comedian_profile .profile_text .follow .empty {
+  background-color: white;
+  border: 2px solid #fc6245;
+}
+body .comedian_profile .profile_text .margin_text {
+  margin-top: 10px;
+  text-align: left;
+}
+body .comedian_profile .profile_text i {
+  margin-left: 10px;
+}
+body .movie_detail {
+  background-color: white;
+}
+body .movie_detail img {
+  width: 100%;
+}
+body .movie_detail .submit {
+  width : 100%;
+  text-align: center;
+}
+body .movie_detail .comment img {
+  width: 50px;
+  display: inline-block;
+}
+body .movie_detail .comment .balloon1-left {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0 1.5em 15px;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+}
+body .movie_detail .comment .balloon1-left:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-right: 15px solid #e0edff;
+}
+body .movie_detail .comment .balloon1-left p {
+  margin: 0;
+  padding: 0;
+}
+body .notification {
+  width: 100%;
+  background-color: white;
+  text-align: center;
+}
+body .notification .message {
+  text-align: left;
+  padding: 30px;
+  border-top: 1px solid gainsboro;
+}
+body .ranking {
+  background-color: white;
+  margin: 10px auto;
+}
+body .ranking .number img {
+  width: 30px;
+}
+body .ranking .comedian {
+  text-align: center;
+}
+body .ranking .comedian img {
+  width: 100%;
+}
+body .scroll {
+  display: flex;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+body .scroll img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+body .scroll img {
+  animation: loop 50s -25s linear infinite;
+}
+body .selectbox {
+  border: 2px solid #bdbdbd;
+  position: relative;
+  width: 30%;
+  background-color: white;
+  margin: 10px;
+}
+body .selectbox::after {
+  position: absolute;
+  top: 35%;
+  right: 3%;
+  margin-top: -8px;
+  content: "▼";
+  color: #333;
+  pointer-events: none;
+  /* マウスイベントを無効にする */
+}
+body .type {
+  width: 100%;
+  margin: 10px auto;
+  text-align: center;
+}
+body .type span {
+  color: gainsboro;
+}
+body .type .now {
+  color: black;
+}
+body select {
+  width: 100%;
+  border: none;
+  -webkit-appearance: none;
+  background-color: white;
+  /* デフォルトスタイルをリセットする */
+}
+body .card {
+  background-color: white;
+  margin: 16px 0px;
+}
+body .card .right_text {
+  display: inline-block;
+}
+body .card .card_name {
+  vertical-align: top;
+  font-weight: bold;
+}
+body .card .profile_img {
+  width: 38px;
+  border-radius: 50%;
+  border: 1px solid gray;
+  margin-top: 10px;
+  display: inline-block;
+}
+body .card .thumbnail {
+  width: 100%;
+}
+body .card .card_footer {
+  text-align: right;
+  font-size: 10px;
+}
+body .card .icon img {
+  width: 10px;
+  padding-right: 3px;
+  padding-left: 10px;
+}
+body .profile {
+  text-align: center;
+  margin: 40px auto;
+}
+body .profile .prof_img {
+  border-radius: 50%;
+}
+body .profile .status {
+  margin-top: 20px;
+  font-size: 12px;
+}
+body .profile .status span {
+  margin: 0px 10px;
+}
+body .profile #tab {
+  letter-spacing: -1em;
+}
+body .profile #tab .min_title {
+  letter-spacing: 0em;
+  background-color: gainsboro;
+  border: 1px solid gray;
+  width: 49%;
+  display: inline-block;
+}
+body .profile #tab .min_title img {
+  margin-top: 10px;
+  width: 25px;
+}
+body .profile #tab .select {
+  background-color: white;
+}
+body .profile .tab_item {
+  display: none;
+}
+body .profile .card {
+  text-align: left;
+}
+.gacha {
+  position: fixed;
+  bottom: 60px;
+  right: 0px;
+  border-radius: 50%;
+  background-color: navajowhite;
+  padding: 3px;
+  margin: 10px;
+}
+.gacha img {
+  object-fit: cover;
+  width: 64px;
+  height: 64px;
+}
+.blue {
+  color: #1ea1f2;
+}
+.red {
+  color: #f00;
+}
+.no_decoration {
+  text-decoration: none;
+  color: black;
+}
+.white {
+  color: white;
+}
+.gray {
+  color: gainsboro;
+}
+.flash_message {
+  color: red;
+}
+@keyframes loop {
+  0% {
+    transform: translateX(200%);
+  }
+  to {
+    transform: translateX(-200%);
+  }
+}
+@keyframes loop2 {
+  0% {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-200%);
+  }
+}
+/**PC版の簡易設定**/@media (min-width: 769px) {
+  body {
+    margin: 0 auto;
+    width: 768px;
+  }
+  footer {
+    width: 768px;
+  }
+  .top_images img {
+    height: 150px;
+  }
+  .gacha {
+    display: none;
+  }
+}
