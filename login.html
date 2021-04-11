@@ -12,6 +12,7 @@
         Vote
     </title>
     <!-- <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}"/> -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
     </script>
     <!-- Styles -->
@@ -26,12 +27,14 @@
 </head>
 <body>
   <header>
-    おすすめの店舗
-    <a href="./login.html">ログイン</a>
+    ログイン
   </header>
   <div class="main">
     <div id="ranking">
       <div class="content">
+          ID:<input type="text" id="email" /> <br />
+          パスワード<input type="text" id="pass" />
+          <input type="submit" id="submit" value="ログイン" />
       </div>
     </div>
   </div>
@@ -49,7 +52,7 @@
           <span id="footer_ranking">保留</span>
         </div>
       </a>
-      <a href="./mypage.html">
+      <a href="/mypage">
         <div class="footer_menu" id="mypage">
           <img src="./img/icon_user.png" /><br />
           <span id="footer_mypage">マイページ</span>
@@ -58,25 +61,29 @@
     </div>
   </footer>
   <script>
-      window.onload = function() {
-        $.ajax('http://kensyu.jeez.jp/api/category',
+    $(function() {
+      // ［検索］ボタンクリックで検索開始
+      $('#submit').click(function() {
+        var email = $('#email').val();
+        var password = $('#pass').val();
+        $.ajax('http://kensyu.jeez.jp/api/login',
           {
-            type: 'get'
+            type: 'post',
+            data: { "email" : email,"password":password },
+            dataType : "json"
           }
         )
         // 検索成功時にはページに結果を反映
         .done(function(data) {
-          console.log(data);
-          var categories = data['result']['categories'];
-          for(var i = 0;i < categories.length; i++){
-            $(".content").append("<li>"+categories[i]["name"]+"</li>")
-          }
+          // 結果リストをクリア
+          alert("ログイン成功");
         })
         // 検索失敗時には、その旨をダイアログ表示
-        .fail(function(data) {
-          console.error(data)
+        .fail(function() {
+          window.alert('メールアドレス or パスワードが間違っています。');
         });
-      };
+      });
+    });
   </script>
 </body>
 </html>

@@ -59,18 +59,17 @@
   </footer>
   <script>
       window.onload = function() {
-        $.ajax('http://kensyu.jeez.jp/api/category',
+        $.ajax('http://kensyu.jeez.jp/api/mypage',
           {
+            headers: {
+              "token" : "d36072a930278c2"
+            },
             type: 'get'
           }
         )
         // 検索成功時にはページに結果を反映
         .done(function(data) {
           console.log(data);
-          var categories = data['result']['categories'];
-          for(var i = 0;i < categories.length; i++){
-            $(".content").append("<li>"+categories[i]["name"]+"</li>")
-          }
         })
         // 検索失敗時には、その旨をダイアログ表示
         .fail(function(data) {
