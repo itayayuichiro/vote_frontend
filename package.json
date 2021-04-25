@@ -1,0 +1,27 @@
+{
+  "name": "vote_frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itayayuichiro/vote_frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itayayuichiro/vote_frontend/issues"
+  },
+  "homepage": "https://github.com/itayayuichiro/vote_frontend#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^4.1.0",
+    "gulp-webserver": "^0.9.1",
+    "run-sequence": "^2.2.1"
+  }
+}
