@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+// form.scss
+// フォーム
+
+.vo-form {
+  text-align: center;
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: $margin * 5;
+    input {
+      position: relative;
+      text-align: left;
+      width: 80vw;
+      height: 48px;
+      padding-left: $padding * 2;
+      box-shadow: $shadow-01;
+      border: 2px solid $white-c;
+      border-radius: 40px;
+      color: $white-c;
+      &:focus {
+        border-radius: 40px;
+      }
+      &::placeholder {
+        color: $white-c;
+        opacity: .8;
+      }
+    }
+  }
+  &__item {
+    margin-bottom: $margin * 3;
+    p {
+      margin-bottom: $margin;
+      text-align: left;
+      color: $white-c;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .vo-form__mail::before {
+      position: absolute;
+      content: '\f0e0';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 400;
+    }
+  }
+  .vo-form__item:last-of-type {
+    margin-bottom: $margin * 2;
+  }
+  &__help {
+    margin-top: - $margin * 1;
+    a {
+      font-size: 14px;
+      color: $white-c;
+      text-decoration: underline;
+    }
+  }
+}

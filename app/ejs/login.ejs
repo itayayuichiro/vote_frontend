@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('config/_head'); %>
+</head>
+<body class="vo-splash">
+  <div class="contents">
+    <div class="logo">
+      <img src="./assets/img/vote-logo-white.svg">
+    </div>
+    <%- include('component/_form'); %>
+  </div>
+  <script>
+    $(function() {
+      // ［検索］ボタンクリックで検索開始
+      $('#submit').click(function() {
+        var email = $('#email').val();
+        var password = $('#pass').val();
+        $.ajax('http://kensyu.jeez.jp/api/login',
+          {
+            type: 'post',
+            data: { "email" : email,"password":password },
+            dataType : "json"
+          }
+        )
+        // 検索成功時にはページに結果を反映
+        .done(function(data) {
+          // 結果リストをクリア
+          alert("ログイン成功");
+        })
+        // 検索失敗時には、その旨をダイアログ表示
+        .fail(function() {
+          window.alert('メールアドレス or パスワードが間違っています。');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

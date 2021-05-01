@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<title>
+    Vote
+</title>
+<!-- <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}"/> -->
+<script>
+</script>
+<!-- Styles -->
+<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+<link href="./css/destyle.css" rel="stylesheet">
+<link href="./css/style.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<script src="./js/custom.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r84/three.min.js"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+</head>
+<body class="vo-splash">
+  <div class="contents">
+    <div class="logo">
+      <img src="./assets/img/vote-logo-white.svg">
+    </div>
+    <div class="vo-form">
+  <div class="vo-form__wrapper">
+    <div class="vo-form__item">
+      <input class="vo-form__mail" type="text" placeholder="メールアドレス / ID">
+    </div>
+    <div class="vo-form__item">
+      <input class="vo-form__password" type="text" placeholder="パスワード">
+    </div>
+    <div class="vo-form__help">
+      <a href="">パスワードを忘れた方はこちら</a>
+    </div>
+  </div>
+  <div class="vo-button__wrapper">
+    <button class="vo-button vo-button--primary vo-button--large">ログイン</button>
+  </div>
+</div>
+  </div>
+  <script>
+    $(function() {
+      // ［検索］ボタンクリックで検索開始
+      $('#submit').click(function() {
+        var email = $('#email').val();
+        var password = $('#pass').val();
+        $.ajax('http://kensyu.jeez.jp/api/login',
+          {
+            type: 'post',
+            data: { "email" : email,"password":password },
+            dataType : "json"
+          }
+        )
+        // 検索成功時にはページに結果を反映
+        .done(function(data) {
+          // 結果リストをクリア
+          alert("ログイン成功");
+        })
+        // 検索失敗時には、その旨をダイアログ表示
+        .fail(function() {
+          window.alert('メールアドレス or パスワードが間違っています。');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
