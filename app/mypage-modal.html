@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<title>
+    Vote
+</title>
+<!-- <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}"/> -->
+<script>
+</script>
+<!-- Styles -->
+<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+<link href="./css/destyle.css" rel="stylesheet">
+<link href="./css/style.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r84/three.min.js"></script>
+<script src="./js/custom.js"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+</head>
+<body>
+  <div class="vo-app-header vu-mb24">
+    <a href="mypage.html" class="vo-app-header--previous"><i class="fas fa-chevron-left"></i> カテゴリ一覧へ</a>
+    <h1 class="vo-title vo-title--h4">寿司のおすすめ</h1>
+  </div>
+  <div class="vo-contents">
+    <h2 class="vo-title vo-title--h5 vu-mb16"><i class="vo-icon vo-icon--yellow vu-mr08 fas fa-star"></i>voteする</h2>
+    <div class="vo-card--wrapper">
+      <div class="vo-card vo-card--wide">
+        <a href="#">
+          <div class="vo-card__rank vo-card__rank--1st">
+            1st
+          </div>
+          <div class="vo-card__image">
+            <img src="./assets/img/pizza.png">
+          </div>
+          <div class="vo-card__title">
+            <p>日本料理亭 すまし</p>
+          </div>
+          <div class="vo-card__place">
+            <p><i class="vu-mr08 fas fa-map-marker-alt"></i>東京都中野区弥生町１丁目９</p>
+          </div>
+          <div class="vo-modal--show">
+            <div class="vo-modal">
+              <div class="vo-modal__head">
+                <h4 class="vo-title--h4">
+                  寿司 おすすめ店 3rd登録
+                </h4>
+              </div>
+              <div class="vo-modal__contents">
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="vo-card vo-card--wide">
+        <a href="">
+          <div class="vo-card__rank vo-card__rank--2nd">
+            2nd
+          </div>
+          <div class="vo-card__image">
+            <img src="./assets/img/pizza.png">
+          </div>
+          <div class="vo-card__title">
+            <p>すしざんまい 東京銀座店</p>
+          </div>
+          <div class="vo-card__place">
+            <p><i class="vu-mr08 fas fa-map-marker-alt"></i>東京都中央区銀座６丁目４−６ 646ビル 1F</p>
+          </div>
+        </a>
+      </div>
+      <div class="vo-card vo-card--wide vo-card--empty">
+        <a href="">
+          <div class="vo-card__rank vo-card__rank--3rd">
+            3rd
+          </div>
+          <div class="vo-card__image">
+            
+          </div>
+          <div class="vo-card__title">
+            <p>未設定</p>
+          </div>
+          <div class="vo-card__place">
+            <p><i class="vu-mr08 fas fa-map-marker-alt"></i>-</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div id="modal" style="display:none;">
+      <p>これはサンプルです。</p>
+    </div>
+  </div>
+  <footer class="vo-footer">
+  <ul class="vo-footer__list">
+    <li class="vo-footer__item">
+      <a href="#">
+        <i class="fas fa-crown"></i>
+        <p>ランキング</p>
+      </a>
+    </li>
+    <li class="vo-footer__item">
+      <a href="mypage.html">
+        <i class="fas fa-user"></i>
+        <p>マイページ</p>
+      </a>
+    </li>
+  </ul>
+</footer>
+  <script>
+      window.onload = function() {
+        $.ajax('http://kensyu.jeez.jp/api/mypage',
+          {
+            headers: {
+              "token" : "d36072a930278c2"
+            },
+            type: 'get'
+          }
+        )
+        // 検索成功時にはページに結果を反映
+        .done(function(data) {
+          console.log(data);
+        })
+        // 検索失敗時には、その旨をダイアログ表示
+        .fail(function(data) {
+          console.error(data)
+        });
+      };
+  </script>
+</body>
+</html>

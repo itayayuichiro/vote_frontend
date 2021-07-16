@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('config/_head'); %>
+
+</head>
+<body>
+  <div class="vo-app-header vu-mb24">
+    <a href="mypage.html" class="vo-app-header--previous"><i class="fas fa-chevron-left"></i> カテゴリ一覧へ</a>
+    <h1 class="vo-title vo-title--h4">寿司のおすすめ</h1>
+  </div>
+  <div class="vo-contents">
+    <h2 class="vo-title vo-title--h5 vu-mb16"><i class="vo-icon vo-icon--yellow vu-mr08 fas fa-star"></i>voteする</h2>
+    <div class="vo-card--wrapper">
+      <div class="vo-card vo-card--wide">
+        <a href="./mypage-modal.html">
+          <div class="vo-card__rank vo-card__rank--1st">
+            1st
+          </div>
+          <div class="vo-card__image">
+            <img src="./assets/img/pizza.png">
+          </div>
+          <div class="vo-card__title">
+            <p>日本料理亭 すまし</p>
+          </div>
+          <div class="vo-card__place">
+            <p><i class="vu-mr08 fas fa-map-marker-alt"></i>東京都中野区弥生町１丁目９</p>
+          </div>
+        </a>
+      </div>
+      <div class="vo-card vo-card--wide">
+        <a href="#">
+          <div class="vo-card__rank vo-card__rank--2nd">
+            2nd
+          </div>
+          <div class="vo-card__image">
+            <img src="./assets/img/pizza.png">
+          </div>
+          <div class="vo-card__title">
+            <p>すしざんまい 東京銀座店</p>
+          </div>
+          <div class="vo-card__place">
+            <p><i class="vu-mr08 fas fa-map-marker-alt"></i>東京都中央区銀座６丁目４−６ 646ビル 1F</p>
+          </div>
+        </a>
+      </div>
+      <div class="vo-card vo-card--wide vo-card--empty">
+        <a href="./mypage-modal.html">
+          <div class="vo-card__rank vo-card__rank--3rd">
+            3rd
+          </div>
+          <div class="vo-card__image">
+            
+          </div>
+          <div class="vo-card__title">
+            <p>未設定</p>
+          </div>
+          <div class="vo-card__place">
+            <p><i class="vu-mr08 fas fa-map-marker-alt"></i>-</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div id="modal" style="display:none;">
+      <p>これはサンプルです。</p>
+    </div>
+  </div>
+  <%- include('component/_footer'); %>
+  <script>
+      window.onload = function() {
+        $.ajax('http://kensyu.jeez.jp/api/mypage',
+          {
+            headers: {
+              "token" : "d36072a930278c2"
+            },
+            type: 'get'
+          }
+        )
+        // 検索成功時にはページに結果を反映
+        .done(function(data) {
+          console.log(data);
+        })
+        // 検索失敗時には、その旨をダイアログ表示
+        .fail(function(data) {
+          console.error(data)
+        });
+      };
+  </script>
+</body>
+</html>

@@ -1,18 +1,32 @@
 @charset "utf-8";
 
+// layout ----------
+body {
+  font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "palt";
+  letter-spacing: .4px;
+  transition: .3s;
+}
+
 // main.scss
 // プロジェクトのメインスタイル
-
-
 .contents {
   padding: 0 $padding;
 }
 .logo {
-  margin: $margin * 10 0 $margin * 8;
+  margin: $margin * 13 0 $margin * 8;
   text-align: center;
   img {
-    width: 60vw;
+    margin-bottom: $margin * 3;
+    width: 280px;
     height: auto;
+  }
+  p {
+    letter-spacing: 2px;
+    font-size: $small;
+    font-weight: bold;
+    color: $main-c;
   }
 }
 /**共通部分**/.top_image {
@@ -105,16 +119,10 @@ footer .footer_menu img {
 footer .select {
   background-color: #e74707;
 }
-h3 {
-  border-left: 3px solid orange;
-  margin-left: 5px;
-  padding-left: 5px;
-}
 body {
   /* ログイン */
   /* 芸人詳細 */
   /* 動画詳細 */
-  background-color: #f2f2f2;
   /* 三角を入れる */
 }
 body .btn {

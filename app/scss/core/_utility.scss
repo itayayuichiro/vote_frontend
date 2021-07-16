@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+// utility.scss
+// 便利で利便性の高いクラス
+
+.vu-mt08 {
+  margin-top: $margin;
+}
+.vu-mb08 {
+  margin-bottom: $margin;
+}
+.vu-mr08 {
+  margin-right: $margin;
+}
+.vu-ml08 {
+  margin-left: $margin;
+}
+.vu-mt16 {
+  margin-top: $margin * 2;
+}
+.vu-mb16 {
+  margin-bottom: $margin * 2;
+}
+.vu-mr16 {
+  margin-right: $margin * 2;
+}
+.vu-ml16 {
+  margin-left: $margin * 2;
+}
+.vu-mt24 {
+  margin-top: $margin * 3;
+}
+.vu-mb24 {
+  margin-bottom: $margin * 3;
+}
+.vu-mr24 {
+  margin-right: $margin * 3;
+}
+.vu-ml24 {
+  margin-left: $margin * 3;
+}
+
+.vu-flex {
+  display: flex;
+}
+
+.vu-flex--justify {
+  &__space-around {
+    justify-content: space-around;
+  }
+  &__space-between {
+    justify-content: space-between;
+  }
+}
+
+.vu-flex--wrap {
+  &__wrap {
+    flex-wrap: wrap;
+  }
+}

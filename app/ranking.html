@@ -1,23 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%- include('config/_head'); %>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<title>
+    Vote
+</title>
+<!-- <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}"/> -->
+<script>
+</script>
+<!-- Styles -->
+<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+<link href="./css/destyle.css" rel="stylesheet">
+<link href="./css/style.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r84/three.min.js"></script>
+<script src="./js/custom.js"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
 </head>
 <body>
-  <%- include('component/_profile'); %>
+  <h1 class="vo-title vo-title--h4"><i class="vo-icon vo-icon--yellow vu-mr08 fas fa-crown"></i>みんなのおすすめのお店</h1>
   <div class="vo-contents">
-    <h2 class="vo-title vo-title--h5 vu-mb16"><i class="vo-icon vo-icon--yellow vu-mr08 fas fa-star"></i>あなたのvote</h2>
     <div class="vo-card--wrapper">
       <div class="vo-card">
-        <a href="mypage-detail.html">
-          <div class="vo-card__image">
-            <img src="./assets/img/pizza.png">
-          </div>
-          <div class="vo-card__title">
-            <p>寿司</p>
-          </div>
-        </a>
+        <div class="vo-card__image">
+          <img src="./assets/img/pizza.png">
+        </div>
+        <div class="vo-card__title">
+          <p>寿司</p>
+        </div>
       </div>
       <div class="vo-card">
         <div class="vo-card__image">
@@ -104,7 +124,22 @@
       <p>これはサンプルです。</p>
     </div>
   </div>
-  <%- include('component/_footer'); %>
+  <footer class="vo-footer">
+  <ul class="vo-footer__list">
+    <li class="vo-footer__item">
+      <a href="#">
+        <i class="fas fa-crown"></i>
+        <p>ランキング</p>
+      </a>
+    </li>
+    <li class="vo-footer__item">
+      <a href="mypage.html">
+        <i class="fas fa-user"></i>
+        <p>マイページ</p>
+      </a>
+    </li>
+  </ul>
+</footer>
   <script>
       window.onload = function() {
         $.ajax('http://kensyu.jeez.jp/api/mypage',

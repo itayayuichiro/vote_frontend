@@ -2,18 +2,23 @@
 // プロジェクトの各種変数を保存するファイル
 
 // カラー
-$main-c: #FF9A75;
+$main-c: #99796c;
 $sub-c: #FFC380;
 
 $extend-c-01: #FFE7A6;
 $extend-c-02: #7E5987;
-$extend-c-03: #2B3568;
+$extend-c-03: #32435F;
 
 $white-c: #FFF;
+$light-gray-c: #fafafa;
+$yellow-c: #ffb42a;
+$gold-c: #DBB400;
+$silver-c: #bbb3b3;
+$bronze-c: #C08D5E;
 
 $bg-c-01: #EFEFEF; 
 
-$text-c-01: #201e3e;
+$text-c-01: #3B4D5A;
 $text-c-02: #444;
 $text-c-03: #777;
 $text-c-04: #999;
@@ -21,9 +26,24 @@ $text-c-05: #bbb;
 
 $link-c: #333;
 
+// フォントサイズ
+$smallSS: 8px;
+$smallS: 10px;
+$small: 12px;
+$normal: 14px;
+$large: 18px;
+$largeL: 22px;
+$largeLL: 28px;
+
 // マージン
 $margin: 8px;
 $padding: 8px;
 
 // 影
-$shadow-01: 0 8px 8px 0 rgba(0, 0, 0, .1);
+$shadow-01: 0 3px 3px 0 rgba(0, 0, 0, .1);
+
+// 光彩
+$outline-01: 0 3px 3px 3px rgb(255, 255, 255);
+
+// 角丸
+$radius: 4px;

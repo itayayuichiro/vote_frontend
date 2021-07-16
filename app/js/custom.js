@@ -55,5 +55,4 @@ $(function () {
   $('.close').click(function(){
     $('.modal').hide("slow");
   })
-
 });

@@ -22,31 +22,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-<script src="./js/custom.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/threejs/r84/three.min.js"></script>
+<script src="./js/custom.js"></script>
 <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body class="vo-splash">
   <div class="contents">
     <div class="logo">
-      <img src="./assets/img/vote-logo-white.svg">
+      <img src="./assets/img/vote-logo-name.png">
+      <p>みんなの投票で決める街のグルメアプリ</p>
     </div>
     <div class="vo-form">
-  <div class="vo-form__wrapper">
-    <div class="vo-form__item">
-      <input class="vo-form__mail" type="text" placeholder="メールアドレス / ID">
+      <div class="vo-form__wrapper">
+        <div class="vo-form__item">
+          <input class="vo-form__mail" type="text" placeholder="メールアドレス / ID">
+        </div>
+        <div class="vo-form__item">
+          <input class="vo-form__password" type="password" placeholder="パスワード">
+        </div>
+        <div class="vo-form__help">
+          <a href="">パスワードを忘れた方はこちら</a>
+        </div>
+      </div>
+      <div class="vo-button__wrapper">
+        <button class="vo-button vo-button--primary vo-button--large"><a href="./mypage.html">ログイン</a></button>
+        <button class="vo-button vo-button--secondary vo-button--large vu-mt16"><a href="./mypage.html">新規登録</a></button>
+      </div>
     </div>
-    <div class="vo-form__item">
-      <input class="vo-form__password" type="password" placeholder="パスワード">
-    </div>
-    <div class="vo-form__help">
-      <a href="">パスワードを忘れた方はこちら</a>
-    </div>
-  </div>
-  <div class="vo-button__wrapper">
-    <button class="vo-button vo-button--primary vo-button--large">ログイン</button>
-  </div>
-</div>
   </div>
   <script>
     $(function() {
