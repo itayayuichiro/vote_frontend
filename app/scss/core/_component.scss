@@ -250,10 +250,11 @@ body {
 
 // modal ----------
 .vo-modal {
-  margin: $margin * 10 $margin * 2;
-  height: 500px;
+  margin: $margin * 4 $margin * 2;
+  height: 740px;
   border-radius: 5px;
   background-color: $white-c;
+  overflow: auto;
   &--show {
     position: fixed;
     top: 0;
@@ -267,6 +268,9 @@ body {
 
   }
   &__head {
+    z-index: 8;
+    position: sticky;
+    top: 0;
     text-align: center;
     height: 60px;
     background-color: $main-c;
@@ -383,6 +387,43 @@ body {
       font-weight: normal;
     }
   }
+}
+// result ---------
+.vo-result {
+  margin-top: $margin * 2;
+  border: 1px solid $main-c;
+  &--list {
+    height: 300px;
+    overflow: scroll;
+  }
+  &--list__info {
+    padding: $padding * 2 $padding * 3;
+    border-bottom: 1px solid $main-c;
+    color: $text-c-01;
+    &:last-child {
+      border-bottom: none;
+    }
+    &-name {
+      font-size: $normal;
+      font-weight: bold;
+      margin-bottom: $margin;
+    }
+    &-map {
+      font-size: $small;
+      i {
+        margin-right: 3px;
+      }
+    }
+  }
+  &__wrapper {
+    .vo-result--title {
+      font-size: $small;
+      color: $text-c-03;
+    }
+  }
+}
+.is-selected {
+  background-color: rgba($main-c, .2);
 }
 
 // title ----------

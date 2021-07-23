@@ -4,57 +4,57 @@
 // 便利で利便性の高いクラス
 
 .vu-mt08 {
-  margin-top: $margin;
+  margin-top: $margin !important;
 }
 .vu-mb08 {
-  margin-bottom: $margin;
+  margin-bottom: $margin !important;
 }
 .vu-mr08 {
-  margin-right: $margin;
+  margin-right: $margin !important;
 }
 .vu-ml08 {
-  margin-left: $margin;
+  margin-left: $margin !important;
 }
 .vu-mt16 {
-  margin-top: $margin * 2;
+  margin-top: $margin * 2 !important;
 }
 .vu-mb16 {
-  margin-bottom: $margin * 2;
+  margin-bottom: $margin * 2 !important;
 }
 .vu-mr16 {
-  margin-right: $margin * 2;
+  margin-right: $margin * 2 !important;
 }
 .vu-ml16 {
-  margin-left: $margin * 2;
+  margin-left: $margin * 2 !important;
 }
 .vu-mt24 {
-  margin-top: $margin * 3;
+  margin-top: $margin * 3 !important;
 }
 .vu-mb24 {
-  margin-bottom: $margin * 3;
+  margin-bottom: $margin * 3 !important;
 }
 .vu-mr24 {
-  margin-right: $margin * 3;
+  margin-right: $margin * 3 !important;
 }
 .vu-ml24 {
-  margin-left: $margin * 3;
+  margin-left: $margin * 3 !important;
 }
 
 .vu-flex {
-  display: flex;
+  display: flex !important;
 }
 
 .vu-flex--justify {
   &__space-around {
-    justify-content: space-around;
+    justify-content: space-around !important;
   }
   &__space-between {
-    justify-content: space-between;
+    justify-content: space-between ;
   }
 }
 
 .vu-flex--wrap {
   &__wrap {
-    flex-wrap: wrap;
+    flex-wrap: wrap !important;
   }
 }
