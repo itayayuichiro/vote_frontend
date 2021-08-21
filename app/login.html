@@ -35,17 +35,17 @@
     <div class="vo-form">
       <div class="vo-form__wrapper">
         <div class="vo-form__item">
-          <input class="vo-form__mail" type="text" placeholder="メールアドレス / ID">
+          <input class="vo-form__mail" type="text" id="email" placeholder="メールアドレス / ID">
         </div>
         <div class="vo-form__item">
-          <input class="vo-form__password" type="password" placeholder="パスワード">
+          <input class="vo-form__password" type="password" id="pass" placeholder="パスワード">
         </div>
         <div class="vo-form__help">
           <a href="">パスワードを忘れた方はこちら</a>
         </div>
       </div>
       <div class="vo-button__wrapper">
-        <button class="vo-button vo-button--primary vo-button--large"><a href="./mypage.html">ログイン</a></button>
+        <button class="vo-button vo-button--primary vo-button--large"><a href="#" id="login">ログイン</a></button>
         <button class="vo-button vo-button--secondary vo-button--large vu-mt16"><a href="./mypage.html">新規登録</a></button>
       </div>
     </div>
@@ -53,7 +53,7 @@
   <script>
     $(function() {
       // ［検索］ボタンクリックで検索開始
-      $('#submit').click(function() {
+      $('#login').click(function() {
         var email = $('#email').val();
         var password = $('#pass').val();
         $.ajax('http://kensyu.jeez.jp/api/login',
@@ -66,7 +66,7 @@
         // 検索成功時にはページに結果を反映
         .done(function(data) {
           // 結果リストをクリア
-          alert("ログイン成功");
+          location.href = "./mypage.html";
         })
         // 検索失敗時には、その旨をダイアログ表示
         .fail(function() {
