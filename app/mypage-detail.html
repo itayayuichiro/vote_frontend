@@ -35,7 +35,7 @@
   <div class="vo-contents">
     <h2 class="vo-title vo-title--h5 vu-mb16"><i class="vo-icon vo-icon--yellow vu-mr08 fas fa-star"></i>voteする</h2>
     <div class="vo-card--wrapper">
-      <div class="vo-card vo-card--wide">
+<!--       <div class="vo-card vo-card--wide">
         <a href="./mypage-modal.html">
           <div class="vo-card__rank vo-card__rank--1st">
             1st
@@ -82,7 +82,7 @@
             <p><i class="vu-mr08 fas fa-map-marker-alt"></i>-</p>
           </div>
         </a>
-      </div>
+      </div> -->
     </div>
     <div id="modal" style="display:none;">
       <p>これはサンプルです。</p>
@@ -105,22 +105,62 @@
   </ul>
 </footer>
   <script>
+    const number = ["1st","2nd","3rd"];
       window.onload = function() {
         $.ajax('http://kensyu.jeez.jp/api/mypage',
           {
             headers: {
-              "token" : "d36072a930278c2"
+              "token" : "d060e5c62f83cb1"
             },
             type: 'get'
           }
         )
         // 検索成功時にはページに結果を反映
         .done(function(data) {
-          console.log(data);
+          var rankings = data['result']['rankings'];
+          for(var i = 0; i < rankings.length; i++){
+            $('.vo-card--wrapper').append(''+
+              '<div class="vo-card vo-card--wide">'+
+                '<a href="./mypage-modal.html">'+
+                  '<div class="vo-card__rank vo-card__rank--'+number[i]+'">'+
+                    number[i]+
+                  '</div>'+
+                  '<div class="vo-card__image">'+
+                    '<img src="./assets/img/pizza.png">'+
+                  '</div>'+
+                  '<div class="vo-card__title">'+
+                    '<p>'+rankings[i]['place_name']+'</p>'+
+                  '</div>'+
+                  '<div class="vo-card__place">'+
+                    '<p><i class="vu-mr08 fas fa-map-marker-alt"></i>'+rankings[i]['address']+'</p>'+
+                  '</div>'+
+                '</a>'+
+              '</div>'
+            );
+          }
+          for(var i = rankings.length;i < 3;i++){
+            $('.vo-card--wrapper').append(''+
+              '<div class="vo-card vo-card--wide vo-card--empty">'+
+                '<a href="./mypage-modal.html">'+
+                  '<div class="vo-card__rank vo-card__rank--'+number[i]+'">'+
+                    number[i]+
+                  '</div>'+
+                  '<div class="vo-card__image">'+
+                    ''+
+                  '</div>'+
+                  '<div class="vo-card__title">'+
+                    '<p>未設定</p>'+
+                  '</div>'+
+                  '<div class="vo-card__place">'+
+                    '<p><i class="vu-mr08 fas fa-map-marker-alt"></i>-</p>'+
+                  '</div>'+
+                '</a>'+
+              '</div>'
+            );
+          }
         })
-        // 検索失敗時には、その旨をダイアログ表示
+        // 検索失敗時には、握りつぶし
         .fail(function(data) {
-          console.error(data)
         });
       };
   </script>
