@@ -35,7 +35,7 @@
         <img src="./assets/img/profile-img02.jpeg">
         <div>
           <div class="vo-profile__name">
-            むらかみ。
+            <!-- むらかみ。 -->
           </div>
           <div class="vo-profile__id">
             @micolumn123
@@ -169,6 +169,29 @@
 </footer>
   <script>
       window.onload = function() {
+        $.ajax('http://kensyu.jeez.jp/api/mypage',
+          {
+            headers: {
+              "token" : getToken()
+            },
+            type: 'get'
+          }
+        )
+        // 検索成功時にはページに結果を反映
+        .done(function(data) {
+          console.log(data['user']);
+          $('.vo-profile__name').text("ゲストユーザー"+data["result"]["user"]["id"]);
+        })
+        // 認証失敗はloginページに
+        .fail(function(data, status, xhr) {
+          if (data.status === 401) {
+            alert("ログイン認証に失敗しました");
+            location.href="./login.html";
+          }else{
+            alert("予期せぬエラーが発生しました");
+          }
+        });
+
         $.ajax('http://kensyu.jeez.jp/api/category',
           {
             type: 'get'

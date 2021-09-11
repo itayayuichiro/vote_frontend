@@ -130,6 +130,15 @@
                 $('h1').text(categories[i]['name'] + "のおすすめ");
               }
             }
+          })       
+          // 認証失敗はloginページに
+          .fail(function(data, status, xhr) {
+            if (data.status === 401) {
+              alert("ログイン認証に失敗しました");
+              location.href="./login.html";
+            }else{
+              alert("予期せぬエラーが発生しました");
+            }
           });
 
           var all_rankings = data['result']['rankings'];
