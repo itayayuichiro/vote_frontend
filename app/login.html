@@ -64,8 +64,9 @@
           }
         )
         // 検索成功時にはページに結果を反映
-        .done(function(data) {
-          // 結果リストをクリア
+        .done(function(data,status, xhr) {
+          
+          document.cookie = "token="+xhr.getResponseHeader("token");
           location.href = "./mypage.html";
         })
         // 検索失敗時には、その旨をダイアログ表示

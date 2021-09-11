@@ -56,3 +56,28 @@ $(function () {
     $('.modal').hide("slow");
   })
 });
+
+// URLからパラメータ取得
+function getParam(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+// トークン取得
+function getToken(){
+  var cookies = document.cookie; //全てのcookieを取り出して
+  var cookiesArray = cookies.split(';'); // ;で分割し配列に
+  var result;
+  for(var c of cookiesArray){ //一つ一つ取り出して
+      var cArray = c.split('='); //さらに=で分割して配列に
+      if( cArray[0].trim() == "token"){ // 取り出したいkeyと合致したら
+        result = cArray[1];  // [key,value] 
+      }
+  }
+  return result;
+}
