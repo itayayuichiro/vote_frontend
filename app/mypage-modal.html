@@ -54,28 +54,28 @@
           <div class="vo-modal">
             <div class="vo-modal__head">
               <h3 class="vo-title--h4">
-                寿司 おすすめ登録
+                
               </h3>
             </div>
             <div class="vo-modal__contents">
               <div class="vo-form">
                 <div class="vo-form__wrapper vu-mb08">
                   <div class="vo-form__item">
-                    <input class="vo-form__place" type="text" placeholder="場所" value="中野">
+                    <input class="vo-form__place" id="place" type="text" placeholder="場所" value="">
                   </div>
                   <div class="vo-form__item">
-                    <input class="vo-form__restaurant" type="text" placeholder="キーワード" value="江戸前">
+                    <input class="vo-form__restaurant" id="keyword" type="text" placeholder="キーワード" value="">
                   </div>
                 </div>
                 <div class="vo-button__wrapper vu-mb24">
-                  <button class="vo-button vo-button--primary vo-button--large"><a href="./mypage.html">検索</a></button>
+                  <button class="vo-button vo-button--primary vo-button--large" id="search"><a href="#">検索</a></button>
                 </div>
               </div>
               <div class="vo-result__wrapper">
-                <h5 class="vo-result--title vu-ml08">検索結果 <span>7</span>件</h5>
+                <!-- <h5 class="vo-result--title vu-ml08">検索結果 <span>7</span>件</h5> -->
                 <div class="vo-result">
                   <ul class="vo-result--list">
-                    <li class="vo-result--list__info is-selected">
+                    <!-- <li class="vo-result--list__info is-selected">
                       <p class="vo-result--list__info-name">江戸前すし吉</p>
                       <p class="vo-result--list__info-map"><i class="fas fa-map-marker-alt"></i>東京都中野区弥生町１丁目９</p>
                     </li>
@@ -102,12 +102,12 @@
                     <li class="vo-result--list__info">
                       <p class="vo-result--list__info-name">江戸前すし吉</p>
                       <p class="vo-result--list__info-map"><i class="fas fa-map-marker-alt"></i>東京都中野区弥生町１丁目９</p>
-                    </li>
+                    </li> -->
                   </ul>
                 </div>
               </div>
               <div class="vo-button__wrapper vu-mt24">
-                <button class="vo-button vo-button--primary vo-button--large"><a href="#">決定</a></button>
+                <button class="vo-button vo-button--primary vo-button--large" id="submit"><a href="#">決定</a></button>
               </div>
             </div>
           </div>
@@ -167,24 +167,88 @@
   </ul>
 </footer>
   <script>
-      window.onload = function() {
-        $.ajax('http://kensyu.jeez.jp/api/mypage',
-          {
-            headers: {
-              "token" : "d36072a930278c2"
-            },
-            type: 'get'
+    window.onload = function() {
+      $.ajax('http://kensyu.jeez.jp/api/category',
+        {
+          type: 'get'
+        }
+      )
+      .done(function(data) {
+        var categories = data['result']['categories'];
+        for(var i = 0; i < categories.length; i++){
+          if(categories[i]['id'] == getParam('category')){
+            $('h3').text(categories[i]['name'] + " おすすめ登録");
           }
-        )
+        }
+      });
+    }
+    $(function() {
+      // ［検索］ボタンクリックで検索開始
+      $('#search').click(function() {
+        var place = $('#place').val();
+        var keyword = $('#keyword').val();
+        $.ajax('http://kensyu.jeez.jp/api/shops?area='+place+'&keyword='+keyword)
         // 検索成功時にはページに結果を反映
         .done(function(data) {
-          console.log(data);
+          for(var i = 0;i < data['result'].length;i++){
+            $('.vo-result--list').append(''+
+              '<li class="vo-result--list__info">'+
+                '<input type="hidden" value="'+data['result'][i]['id']+'">'+
+                '<p class="vo-result--list__info-name">'+data['result'][i]['name']+'</p>'+
+                '<p class="vo-result--list__info-map"><i class="fas fa-map-marker-alt"></i>'+data['result'][i]['address']+'</p>'+
+              '</li>'
+            );
+          }
+          $('.vo-result--list__info').click(function(){
+            $('.vo-result--list__info').removeClass('is-selected');
+            $(this).addClass('is-selected');
+          })
+          // ランキング登録実行
+          $('#submit').click(function() {
+            var place_id = $('.is-selected input').val();
+            var post_request =  {
+                crossDomain: true,
+                headers: { 
+                  "token" : getToken()
+                },
+                type: 'post',
+                data: {"place_id":place_id,"no":getParam('no'),"category_id":getParam('category')},
+                dataType : "json"
+            }
+            var edit_request =  {
+                crossDomain: true,
+                headers: { 
+                  "token" : getToken()
+                },
+                type: 'put',
+                data: {"place_id":place_id,"no":getParam('no'),"category_id":getParam('category')},
+                dataType : "json"
+            }
+            $.ajax('http://kensyu.jeez.jp/api/ranking',
+              getParam('type') == "create" ? post_request : edit_request
+            )
+            // 検索成功時にはページに結果を反映
+            .done(function(data) {
+              location.href = "mypage-detail.html?category="+getParam('category');
+            })
+            // 検索失敗時には、その旨をダイアログ表示
+            .fail(function(data, status, xhr) {
+              if (data.status === 401) {
+                alert("ログイン認証に失敗しました");
+                location.href="./login.html";
+              }else{
+                alert("予期せぬエラーが発生しました");
+              }
+            });
+          });
         })
         // 検索失敗時には、その旨をダイアログ表示
-        .fail(function(data) {
-          console.error(data)
+        .fail(function(error) {
+          console.log(error);
+          window.alert('検索に失敗しました');
         });
-      };
+      });
+    });
   </script>
 </body>
 </html>

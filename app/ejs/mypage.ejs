@@ -9,7 +9,7 @@
   <div class="vo-contents">
     <h2 class="vo-title vo-title--h5 vu-mb16"><i class="vo-icon vo-icon--yellow vu-mr08 fas fa-star"></i>あなたのvote</h2>
     <div class="vo-card--wrapper">
-      <div class="vo-card">
+      <!-- <div class="vo-card">
         <a href="mypage-detail.html">
           <div class="vo-card__image">
             <img src="./assets/img/pizza.png">
@@ -98,7 +98,7 @@
         <div class="vo-card__title">
           <p>オムライス</p>
         </div>
-      </div>
+      </div> -->
     </div>
     <div id="modal" style="display:none;">
       <p>これはサンプルです。</p>
@@ -110,14 +110,48 @@
         $.ajax('http://kensyu.jeez.jp/api/mypage',
           {
             headers: {
-              "token" : "d36072a930278c2"
+              "token" : getToken()
             },
             type: 'get'
           }
         )
         // 検索成功時にはページに結果を反映
         .done(function(data) {
-          console.log(data);
+          console.log(data['user']);
+          $('.vo-profile__name').text("ゲストユーザー"+data["result"]["user"]["id"]);
+        })
+        // 認証失敗はloginページに
+        .fail(function(data, status, xhr) {
+          if (data.status === 401) {
+            alert("ログイン認証に失敗しました");
+            location.href="./login.html";
+          }else{
+            alert("予期せぬエラーが発生しました");
+          }
+        });
+
+        $.ajax('http://kensyu.jeez.jp/api/category',
+          {
+            type: 'get'
+          }
+        )
+        // 検索成功時にはページに結果を反映
+        .done(function(data) {
+          var categories = data['result']['categories'];
+          for(var i = 0; i < categories.length; i++){
+            $('.vo-card--wrapper').append(
+            '<div class="vo-card">'+
+              '<a href="mypage-detail.html?category='+categories[i]['id']+'">'+
+                '<div class="vo-card__image">'+
+                  '<img src="./assets/img/pizza.png">'+
+                '</div>'+
+                '<div class="vo-card__title">'+
+                  '<p>'+categories[i]['name']+'</p>'+
+                '</div>'+
+              '</a>'+
+            '</div>'
+            );
+          }
         })
         // 検索失敗時には、その旨をダイアログ表示
         .fail(function(data) {
