@@ -69,7 +69,7 @@
   <script>
     const number = ["1st","2nd","3rd"];
       window.onload = function() {
-        $.ajax('http://kensyu.jeez.jp/api/mypage',
+        $.ajax('https://kensyu.jeez.jp/api/mypage',
           {
             headers: {
               "token" : getToken()
@@ -80,7 +80,7 @@
         // 検索成功時にはページに結果を反映
         .done(function(data) {
           // ヘッダーに名前反映(別にパラメータ渡しでも良い気がするが直アクセス対策)
-          $.ajax('http://kensyu.jeez.jp/api/category',
+          $.ajax('https://kensyu.jeez.jp/api/category',
             {
               type: 'get'
             }

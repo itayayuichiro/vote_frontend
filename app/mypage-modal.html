@@ -168,7 +168,7 @@
 </footer>
   <script>
     window.onload = function() {
-      $.ajax('http://kensyu.jeez.jp/api/category',
+      $.ajax('https://kensyu.jeez.jp/api/category',
         {
           type: 'get'
         }
@@ -187,7 +187,7 @@
       $('#search').click(function() {
         var place = $('#place').val();
         var keyword = $('#keyword').val();
-        $.ajax('http://kensyu.jeez.jp/api/shops?area='+place+'&keyword='+keyword)
+        $.ajax('https://kensyu.jeez.jp/api/shops?area='+place+'&keyword='+keyword)
         // 検索成功時にはページに結果を反映
         .done(function(data) {
           for(var i = 0;i < data['result'].length;i++){
@@ -224,7 +224,7 @@
                 data: {"place_id":place_id,"no":getParam('no'),"category_id":getParam('category')},
                 dataType : "json"
             }
-            $.ajax('http://kensyu.jeez.jp/api/ranking',
+            $.ajax('https://kensyu.jeez.jp/api/ranking',
               getParam('type') == "create" ? post_request : edit_request
             )
             // 検索成功時にはページに結果を反映
