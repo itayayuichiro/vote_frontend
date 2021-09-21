@@ -28,106 +28,91 @@
 
 </head>
 <body>
-  <h1 class="vo-title vo-title--h4"><i class="vo-icon vo-icon--yellow vu-mr08 fas fa-crown"></i>みんなのおすすめのお店</h1>
-  <div class="vo-contents">
+  <div class="vo-app-header">
+    <h1 class="vo-title vo-title--h4">みんなのvote</h1>
+  </div>
+  <div class="vo-selectbox__wrapper">
+    <div class="vo-selectbox--title">
+      エリア
+    </div>
+    <select class="vo-selectbox" name="area">
+      <option value="全国">全国</option>
+      <option value="北海道">北海道</option>
+      <option value="東北">東北</option>
+      <option value="関東">関東</option>
+      <option value="東京23区内">東京23区内</option>
+      <option value="東京23区外">東京23区外</option>
+      <option value="中部">中部</option>
+      <option value="近畿">近畿</option>
+      <option value="中国・四国">中国・四国</option>
+      <option value="九州">九州</option>
+      <option value="沖縄">沖縄</option>
+    </select>
+  </div>
+  <div class="tab-wrap">
+    <input id="TAB02-01" type="radio" name="TAB02" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB02-01">寿司</label>
+    <input id="TAB02-02" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-02">カレー</label>
+    <input id="TAB02-03" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-03">パスタ</label>
+    <input id="TAB02-04" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-04">ピザ</label>
+    <input id="TAB02-05" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-05">うどん/そば</label>
+    <input id="TAB02-06" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-06">タピオカ</label>
+    <input id="TAB02-07" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-07">中華</label>
+    <input id="TAB02-08" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-08">ラーメン</label>
+    <input id="TAB02-09" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-09">ハンバーグ</label>
+    <input id="TAB02-10" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-10">ハンバーガー</label>
+    <input id="TAB02-11" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-11">オムライス</label>
+  </div>
+  <div class="tab-contents">
     <div class="vo-card--wrapper">
-      <div class="vo-card">
-        <div class="vo-card__image">
-          <img src="./assets/img/pizza.png">
-        </div>
-        <div class="vo-card__title">
-          <p>寿司</p>
-        </div>
+      <div class="vo-card vo-card--wide">
+        <a href="https://tabelog.com/tokyo/A1308/A130802/13015251/">
+          <div class="vo-card__rank vo-card__rank--1st">
+            1st
+          </div>
+          <div class="vo-card__title">
+            <p>日本料理亭 すまし</p>
+          </div>
+          <div class="vo-card__place">
+            <p><i class="fas fa-map-marker-alt"></i>東京都中野区弥生町１丁目９</p>
+          </div>
+        </a>
       </div>
-      <div class="vo-card">
-        <div class="vo-card__image">
-          <img src="./assets/img/pizza.png">
-        </div>
-        <div class="vo-card__title">
-          <p>カレー</p>
-        </div>
+      <div class="vo-card vo-card--wide">
+        <a href="https://tabelog.com/tokyo/A1308/A130802/13015251/">
+          <div class="vo-card__rank vo-card__rank--2nd">
+            2nd
+          </div>
+          <div class="vo-card__title">
+            <p>すしざんまい 東京銀座店</p>
+          </div>
+          <div class="vo-card__place">
+            <p><i class="fas fa-map-marker-alt"></i>東京都中央区銀座６丁目４−６ 646ビル 1F</p>
+          </div>
+        </a>
       </div>
-      <div class="vo-card">
-        <div class="vo-card__image">
-          <img src="./assets/img/pizza.png">
-        </div>
-        <div class="vo-card__title">
-          <p>パスタ</p>
-        </div>
-      </div>
-      <div class="vo-card">
-        <div class="vo-card__image">
-          <img src="./assets/img/pizza.png">
-        </div>
-        <div class="vo-card__title">
-          <p>ピザ</p>
-        </div>
-      </div>
-      <div class="vo-card">
-        <div class="vo-card__image">
-          <img src="./assets/img/pizza.png">
-        </div>
-        <div class="vo-card__title">
-          <p>うどん/そば</p>
-        </div>
-      </div>
-      <div class="vo-card">
-        <div class="vo-card__image">
-          <img src="./assets/img/pizza.png">
-        </div>
-        <div class="vo-card__title">
-          <p>タピオカ</p>
-        </div>
-      </div>
-      <div class="vo-card">
-        <div class="vo-card__image">
-          <img src="./assets/img/pizza.png">
-        </div>
-        <div class="vo-card__title">
-          <p>中華</p>
-        </div>
-      </div>
-      <div class="vo-card">
-        <div class="vo-card__image">
-          <img src="./assets/img/pizza.png">
-        </div>
-        <div class="vo-card__title">
-          <p>ラーメン</p>
-        </div>
-      </div>
-      <div class="vo-card">
-        <div class="vo-card__image">
-          <img src="./assets/img/pizza.png">
-        </div>
-        <div class="vo-card__title">
-          <p>ハンバーグ</p>
-        </div>
-      </div>
-      <div class="vo-card">
-        <div class="vo-card__image">
-          <img src="./assets/img/pizza.png">
-        </div>
-        <div class="vo-card__title">
-          <p>ハンバーガー</p>
-        </div>
-      </div>
-      <div class="vo-card">
-        <div class="vo-card__image">
-          <img src="./assets/img/pizza.png">
-        </div>
-        <div class="vo-card__title">
-          <p>オムライス</p>
-        </div>
+      <div class="vo-card vo-card--wide">
+        <a href="https://tabelog.com/tokyo/A1308/A130802/13015251/">
+          <div class="vo-card__rank vo-card__rank--3rd">
+            3rd
+          </div>
+          <div class="vo-card__title">
+            <p>すし三郎</p>
+          </div>
+          <div class="vo-card__place">
+            <p><i class="fas fa-map-marker-alt"></i>東京都渋谷区３丁目４-６</p>
+          </div>
+        </a>
       </div>
     </div>
-    <div id="modal" style="display:none;">
-      <p>これはサンプルです。</p>
+  </div>
+  <div class="vo-contents">
+    <div class="vo-card--wrapper">
     </div>
   </div>
   <footer class="vo-footer">
   <ul class="vo-footer__list">
     <li class="vo-footer__item">
-      <a href="#">
+      <a href="ranking.html">
         <i class="fas fa-crown"></i>
         <p>ランキング</p>
       </a>
