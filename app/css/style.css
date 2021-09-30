@@ -602,6 +602,7 @@ body {
       width: 80px; }
 
 .vo-card--wide {
+  position: relative;
   width: 100%;
   height: auto;
   min-height: 60px;
@@ -616,6 +617,18 @@ body {
     color: #444; }
     .vo-card--wide .vo-card__place i {
       margin-right: 3px; }
+  .vo-card--wide .vo-card__edit-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #99796c;
+    border-radius: 50%; }
+    .vo-card--wide .vo-card__edit-button i {
+      color: #FFF; }
 
 .vo-footer {
   z-index: 3;
