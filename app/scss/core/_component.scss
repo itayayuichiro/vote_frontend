@@ -18,12 +18,15 @@ body {
 .vo-button {
   display: block;
   margin: 0 auto;
+  height: 44px;
+  width: 124px;
   border-radius: 5px;
   color: $white-c;
   font-size: $normal;
+  text-align: center;
   a {
     display: block;
-    padding: 12px $padding * 5;
+    padding: 12px $padding * 2;
   }
   &--primary {
     background-color: $main-c;
@@ -32,6 +35,9 @@ body {
     background-color: $white-c;
     border: 1px solid $main-c;
     color: $main-c;
+  }
+  &__wrapper {
+    display: flex;
   }
 }
 
@@ -61,7 +67,7 @@ body {
     z-index: 3;
     display: inline-block;
     position: absolute;
-    top: 12px;
+    top: 8px;
     left: 0;
     height: 24px;
     padding: 4px $padding * 3 4px $padding;
@@ -113,28 +119,38 @@ body {
   }
 }
 .vo-card--wide {
+  position: relative;
   width: 100%;
-  height: 120px;
-  padding: $padding * 3 $padding * 2 $padding *2 $padding * 17;
+  height: auto;
+  min-height: 60px;
+  padding: $padding * 6 $padding * 3 $padding * 3 $padding * 3;
   text-align: left;
   .vo-card {
     &__title {
       font-size: $normal;
     }
-    &__image {
-      position: absolute;
-      margin: 0;
-      top: 0;
-      left: 0;
-      width: 120px;
-      height: 120px;
-      background-color: $light-gray-c;
-    }
     &__place {
-      line-height: 1.4;
-      margin-top: $margin * 2;
+      line-height: 1.5;
+      margin-top: $margin;
       font-size: $small;
       color: $text-c-02;
+      i {
+        margin-right: 3px;
+      }
+    }
+    &__edit-button {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      height: 40px;
+      width: 40px;
+      line-height: 40px;
+      text-align: center;
+      background-color: $main-c;
+      border-radius: 50%;
+      i {
+        color: $white-c;
+      }
     }
   }
 }
@@ -218,7 +234,7 @@ body {
     margin-top: - $margin * 1;
     a {
       font-size: 14px;
-      color: $white-c;
+      color: $main-c;
       text-decoration: underline;
     }
   }
@@ -426,6 +442,25 @@ body {
   background-color: rgba($main-c, .2);
 }
 
+// selectbox ------
+.vo-selectbox {
+  width: 100%;
+  height: 48px;
+  margin-left: $margin;
+  padding: $padding * 2;
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: $margin * 2;
+  }
+  &--title {
+    white-space: nowrap;
+    color: $text-c-01;
+    font-weight: bold;
+  }
+}
+
 // title ----------
 .vo-title {
   letter-spacing: 1px;
@@ -443,4 +478,58 @@ body {
   &--h5 {
     font-size: $normal;
   }
+}
+
+// etc ------------
+.tab-wrap {
+  display: flex;
+  overflow-y: scroll;
+  margin: $margin * 2 12px 0 12px;
+  &::-webkit-scrollbar {
+    display:none;
+  }
+}
+.tab-wrap:after {
+  content: '';
+  width: 100%;
+  height: 3px;
+  background: DeepSkyBlue;
+  display: block;
+  order: -1;
+}
+.tab-label {
+  color: White;
+  background: LightGray;
+  font-size: $normal;
+  font-weight: bold;
+  white-space: nowrap;
+  text-align: center;
+  padding: 10px 18px;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 5px 5px 0 0;
+  flex: 1;
+}
+.tab-contents {
+  padding: $padding * 2;
+}
+.tab-label:not(:last-of-type) {
+  margin-right: 3px;
+}
+/* アクティブなタブ */
+.tab-switch:checked+.tab-label {
+  background: $main-c;
+}
+.tab-switch:checked+.tab-label+.tab-content {
+  height: auto;
+  overflow: auto;
+  padding: 15px;
+  opacity: 1;
+  transition: .5s opacity;
+  box-shadow: 0 0 3px rgba(0,0,0,.2);
+}
+/* ラジオボタン非表示 */
+.tab-switch {
+  display: none;
 }

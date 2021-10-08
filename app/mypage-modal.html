@@ -25,11 +25,23 @@
 <script src="https://ajax.googleapis.com/ajax/libs/threejs/r84/three.min.js"></script>
 <script src="./js/custom.js"></script>
 <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+<!– Global site tag (gtag.js) – Google Analytics –>
+<script async src=”https://www.googletagmanager.com/gtag/js?id=G-LHBXWHPT2L”></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag(‘js’, new Date());
+
+  gtag(‘config’, ‘G-LHBXWHPT2L’);
+</script>
+<!-- Ptengine Tag -->
+<script src="https://js.ptengine.jp/1anrb11n.js"></script>
+<!-- End Ptengine Tag -->
 
 </head>
 <body>
   <div class="vo-app-header vu-mb24">
-    <a href="mypage.html" class="vo-app-header--previous"><i class="fas fa-chevron-left"></i> カテゴリ一覧へ</a>
+    <a href="mypage.html" class="vo-app-header--previous"><i class="fas fa-chevron-left"></i> もどる</a>
     <h1 class="vo-title vo-title--h4">寿司のおすすめ</h1>
   </div>
   <div class="vo-contents">
@@ -54,7 +66,6 @@
           <div class="vo-modal">
             <div class="vo-modal__head">
               <h3 class="vo-title--h4">
-                
               </h3>
             </div>
             <div class="vo-modal__contents">
@@ -107,6 +118,7 @@
                 </div>
               </div>
               <div class="vo-button__wrapper vu-mt24">
+                <button class="vo-button vo-button--secondary vo-button--large" id="back"><a href="#">キャンセル</a></button>
                 <button class="vo-button vo-button--primary vo-button--large" id="submit"><a href="#">決定</a></button>
               </div>
             </div>
@@ -153,7 +165,7 @@
   <footer class="vo-footer">
   <ul class="vo-footer__list">
     <li class="vo-footer__item">
-      <a href="#">
+      <a href="ranking.html">
         <i class="fas fa-crown"></i>
         <p>ランキング</p>
       </a>
@@ -167,6 +179,7 @@
   </ul>
 </footer>
   <script>
+    const number = ["1st","2nd","3rd"];
     window.onload = function() {
       $.ajax('https://kensyu.jeez.jp/api/category',
         {
@@ -177,12 +190,15 @@
         var categories = data['result']['categories'];
         for(var i = 0; i < categories.length; i++){
           if(categories[i]['id'] == getParam('category')){
-            $('h3').text(categories[i]['name'] + " おすすめ登録");
+            $('h3').text(categories[i]['name'] + " " + number[i] + " vote");
           }
         }
       });
     }
     $(function() {
+      $('#back').click(function(){
+        location.href = "mypage-detail.html?category="+getParam('category');
+      })
       // ［検索］ボタンクリックで検索開始
       $('#search').click(function() {
         var place = $('#place').val();
