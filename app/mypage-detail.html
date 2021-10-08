@@ -25,29 +25,40 @@
 <script src="https://ajax.googleapis.com/ajax/libs/threejs/r84/three.min.js"></script>
 <script src="./js/custom.js"></script>
 <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+<!– Global site tag (gtag.js) – Google Analytics –>
+<script async src=”https://www.googletagmanager.com/gtag/js?id=G-LHBXWHPT2L”></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag(‘js’, new Date());
+
+  gtag(‘config’, ‘G-LHBXWHPT2L’);
+</script>
+<!-- Ptengine Tag -->
+<script src="https://js.ptengine.jp/1anrb11n.js"></script>
+<!-- End Ptengine Tag -->
 
 </head>
 <body>
   <div class="vo-app-header vu-mb24">
-    <a href="mypage.html" class="vo-app-header--previous"><i class="fas fa-chevron-left"></i> カテゴリ一覧へ</a>
-    <h1 class="vo-title vo-title--h4"></h1>
+    <a href="mypage.html" class="vo-app-header--previous"><i class="fas fa-chevron-left"></i> もどる</a>
+    <h1 class="vo-title vo-title--h4">寿司のvote</h1>
   </div>
   <div class="vo-contents">
-    <h2 class="vo-title vo-title--h5 vu-mb16"><i class="vo-icon vo-icon--yellow vu-mr08 fas fa-star"></i>voteする</h2>
     <div class="vo-card--wrapper">
 <!--       <div class="vo-card vo-card--wide">
         <a href="./mypage-modal.html">
           <div class="vo-card__rank vo-card__rank--1st">
             1st
           </div>
-          <div class="vo-card__image">
-            <img src="./assets/img/pizza.png">
-          </div>
           <div class="vo-card__title">
             <p>日本料理亭 すまし</p>
           </div>
           <div class="vo-card__place">
             <p><i class="vu-mr08 fas fa-map-marker-alt"></i>東京都中野区弥生町１丁目９</p>
+          </div>
+          <div class="vo-card__edit-button">
+            <a href="mypage-modal.html"><i class="fas fa-pen"></i></a>
           </div>
         </a>
       </div>
@@ -56,14 +67,14 @@
           <div class="vo-card__rank vo-card__rank--2nd">
             2nd
           </div>
-          <div class="vo-card__image">
-            <img src="./assets/img/pizza.png">
-          </div>
           <div class="vo-card__title">
             <p>すしざんまい 東京銀座店</p>
           </div>
           <div class="vo-card__place">
             <p><i class="vu-mr08 fas fa-map-marker-alt"></i>東京都中央区銀座６丁目４−６ 646ビル 1F</p>
+          </div>
+          <div class="vo-card__edit-button">
+            <a href="mypage-modal.html"><i class="fas fa-pen"></i></a>
           </div>
         </a>
       </div>
@@ -72,14 +83,14 @@
           <div class="vo-card__rank vo-card__rank--3rd">
             3rd
           </div>
-          <div class="vo-card__image">
-            
-          </div>
           <div class="vo-card__title">
             <p>未設定</p>
           </div>
           <div class="vo-card__place">
             <p><i class="vu-mr08 fas fa-map-marker-alt"></i>-</p>
+          </div>
+          <div class="vo-card__edit-button">
+            <a href="mypage-modal.html"><i class="fas fa-pen"></i></a>
           </div>
         </a>
       </div> -->
@@ -91,7 +102,7 @@
   <footer class="vo-footer">
   <ul class="vo-footer__list">
     <li class="vo-footer__item">
-      <a href="#">
+      <a href="ranking.html">
         <i class="fas fa-crown"></i>
         <p>ランキング</p>
       </a>
@@ -152,18 +163,18 @@
             if(rankings[i] != null && rankings[i]['no'] == i + 1){
               $('.vo-card--wrapper').append(''+
                 '<div class="vo-card vo-card--wide">'+
-                  '<a href="./mypage-modal.html?category='+getParam('category')+'&no='+(i + 1)+'&type=edit">'+
+                  '<a href="https://www.google.com/maps/place/?q=place_id:'+ rankings[i]['place_id'] +'">'+
                     '<div class="vo-card__rank vo-card__rank--'+number[i]+'">'+
                       number[i]+
-                    '</div>'+
-                    '<div class="vo-card__image">'+
-                      '<img src="./assets/img/pizza.png">'+
                     '</div>'+
                     '<div class="vo-card__title">'+
                       '<p>'+rankings[i]['place_name']+'</p>'+
                     '</div>'+
                     '<div class="vo-card__place">'+
                       '<p><i class="vu-mr08 fas fa-map-marker-alt"></i>'+rankings[i]['address']+'</p>'+
+                    '</div>'+
+                    '<div class="vo-card__edit-button">'+
+                      '<a href="./mypage-modal.html?category='+getParam('category')+'&no='+(i + 1)+'&type=edit"><i class="fas fa-pen"></i></a>'+
                     '</div>'+
                   '</a>'+
                 '</div>'
