@@ -133,16 +133,20 @@
           .done(function(data) {
             var categories = data['result']['categories'];
             for(var i = 0; i < categories.length; i++){
-              var id = ('00'+ i + 1 ).slice( -2 );
+              var id = ("00" + (i + 1) ).slice( -2 );
               var checked = i == 0 ? true : false;
               $('.tab-wrap').append(''+
-                '<input id="TAB02-'+id+'" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-'+id+'">'+categories[i]['name']+'</label>'
+                '<input id="TAB02-'+id+'" data-id="'+categories[i]['id']+'" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-'+id+'">'+categories[i]['name']+'</label>'
               );
             }
+            $('.tab-switch').click(function(){
+              loadRanking($(this).data('id'));
+            });
             $('.tab-switch').eq(0).prop("checked",true);
             loadRanking(categories[0]['id']);
           });
       };
+
       function loadRanking(category_id){
         $.ajax('https://kensyu.jeez.jp/api/ranking?category_id='+category_id,
             {
@@ -150,7 +154,6 @@
             }
           )
           .done(function(data) {
-            console.log(data);
             $('.vo-card--wrapper').empty();
             var rankings = data['result']['rankings'];
             for(var i = 0;i < rankings.length;i++){
