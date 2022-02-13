@@ -1,73 +1,26 @@
 @charset "UTF-8";
 body {
-  font-family: 'Noto Sans JP', sans-serif; }
-
-.vo-splash {
-  background-color: #FF9A75; }
-
-.vo-button {
-  display: block;
-  margin: 0 auto;
-  border-radius: 5px;
-  color: #FF9A75; }
-  .vo-button--primary {
-    background-color: #FFF; }
-  .vo-button--large {
-    padding: 8px 80px; }
-
-.vo-form {
-  text-align: center; }
-  .vo-form__wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-bottom: 40px; }
-    .vo-form__wrapper input {
-      position: relative;
-      text-align: left;
-      width: 80vw;
-      height: 48px;
-      padding-left: 16px;
-      box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.1);
-      border: 2px solid #FFF;
-      border-radius: 40px;
-      color: #FFF; }
-      .vo-form__wrapper input:focus {
-        border-radius: 40px; }
-      .vo-form__wrapper input::placeholder {
-        color: #FFF;
-        opacity: .8; }
-  .vo-form__item {
-    margin-bottom: 24px; }
-    .vo-form__item p {
-      margin-bottom: 8px;
-      text-align: left;
-      color: #FFF;
-      font-size: 14px;
-      font-weight: bold; }
-    .vo-form__item .vo-form__mail::before {
-      position: absolute;
-      content: '\f0e0';
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 400; }
-  .vo-form .vo-form__item:last-of-type {
-    margin-bottom: 16px; }
-  .vo-form__help {
-    margin-top: -8px; }
-    .vo-form__help a {
-      font-size: 14px;
-      color: #FFF;
-      text-decoration: underline; }
+  font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "palt";
+  letter-spacing: .8px;
+  transition: .3s; }
 
 .contents {
   padding: 0 8px; }
 
 .logo {
-  margin: 80px 0 64px;
+  margin: 104px 0 64px;
   text-align: center; }
   .logo img {
-    width: 60vw;
+    margin-bottom: 24px;
+    width: 280px;
     height: auto; }
+  .logo p {
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #99796c; }
 
 /**共通部分**/
 .top_image {
@@ -160,16 +113,10 @@ footer .footer_menu img {
 footer .select {
   background-color: #e74707; }
 
-h3 {
-  border-left: 3px solid orange;
-  margin-left: 5px;
-  padding-left: 5px; }
-
 body {
   /* ログイン */
   /* 芸人詳細 */
   /* 動画詳細 */
-  background-color: #f2f2f2;
   /* 三角を入れる */ }
 
 body .btn {
@@ -558,3 +505,502 @@ body .profile .card {
     height: 150px; }
   .gacha {
     display: none; } }
+
+body {
+  background-color: rgba(153, 121, 108, 0.1); }
+
+.vo-splash {
+  background-color: #fafafa; }
+
+.vo-contents {
+  margin: 0 16px; }
+
+.vo-button {
+  display: block;
+  margin: 0 auto;
+  height: 44px;
+  width: 124px;
+  border-radius: 5px;
+  color: #FFF;
+  font-size: 14px;
+  text-align: center; }
+  .vo-button a {
+    display: block;
+    padding: 12px 16px; }
+  .vo-button--primary {
+    background-color: #99796c; }
+  .vo-button--secondary {
+    background-color: #FFF;
+    border: 1px solid #99796c;
+    color: #99796c; }
+  .vo-button__wrapper {
+    display: flex; }
+
+.vo-card--wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; }
+  .vo-card--wrapper::after {
+    display: block;
+    content: "";
+    width: 28vw; }
+
+.vo-card {
+  position: relative;
+  margin-bottom: 16px;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+  background-color: #FFF;
+  width: 30%;
+  height: 142px;
+  text-align: center;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative; }
+  .vo-card__rank {
+    z-index: 3;
+    display: inline-block;
+    position: absolute;
+    top: 8px;
+    left: 0;
+    height: 24px;
+    padding: 4px 24px 4px 8px;
+    line-height: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    color: #FFF;
+    box-sizing: border-box; }
+    .vo-card__rank::after {
+      position: absolute;
+      content: '';
+      width: 0px;
+      height: 0px;
+      z-index: 1; }
+    .vo-card__rank::after {
+      top: 0;
+      right: 0;
+      border-width: 12px 6px 12px 0px;
+      border-color: transparent #fff transparent transparent;
+      border-style: solid; }
+    .vo-card__rank--1st {
+      background: #DBB400; }
+    .vo-card__rank--2nd {
+      background: #bbb3b3; }
+    .vo-card__rank--3rd {
+      background: #C08D5E; }
+  .vo-card:last-child {
+    margin-bottom: 80px; }
+  .vo-card__title {
+    line-height: 1.2;
+    color: #3B4D5A;
+    font-size: 12px;
+    font-weight: bold; }
+  .vo-card__image {
+    margin-top: 16px;
+    margin-bottom: 10px; }
+    .vo-card__image img {
+      width: 80px; }
+
+.vo-card--wide {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 60px;
+  padding: 48px 24px 24px 24px;
+  text-align: left; }
+  .vo-card--wide .vo-card__title {
+    font-size: 14px; }
+  .vo-card--wide .vo-card__place {
+    line-height: 1.5;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #444; }
+    .vo-card--wide .vo-card__place i {
+      margin-right: 3px; }
+  .vo-card--wide .vo-card__edit-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #99796c;
+    border-radius: 50%; }
+    .vo-card--wide .vo-card__edit-button i {
+      color: #FFF; }
+
+.vo-footer {
+  z-index: 3;
+  position: fixed;
+  bottom: 0;
+  background-color: #99796c;
+  color: #FFF; }
+  .vo-footer__list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 56px; }
+  .vo-footer__item {
+    text-align: center; }
+    .vo-footer__item a i {
+      margin-bottom: 4px;
+      font-size: 18px; }
+    .vo-footer__item a p {
+      font-size: 10px; }
+
+.vo-form {
+  text-align: center; }
+  .vo-form__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 16px; }
+    .vo-form__wrapper input {
+      position: relative;
+      text-align: left;
+      width: 80vw;
+      height: 48px;
+      padding-left: 24px;
+      box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+      border: 1px solid #99796c;
+      border-radius: 40px;
+      color: #99796c; }
+      .vo-form__wrapper input:focus {
+        border-radius: 40px;
+        border-color: #FFF; }
+      .vo-form__wrapper input::placeholder {
+        font-size: 14px;
+        color: #99796c;
+        opacity: .7; }
+  .vo-form__item {
+    margin-bottom: 24px; }
+    .vo-form__item p {
+      margin-bottom: 8px;
+      text-align: left;
+      color: #FFF;
+      font-size: 14px;
+      font-weight: bold; }
+    .vo-form__item .vo-form__mail::before {
+      position: absolute;
+      content: '\f0e0';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: bold; }
+  .vo-form .vo-form__item:last-of-type {
+    margin-bottom: 16px; }
+  .vo-form__help {
+    margin-top: -8px; }
+    .vo-form__help a {
+      font-size: 14px;
+      color: #99796c;
+      text-decoration: underline; }
+
+.vo-app-header {
+  position: relative;
+  background-color: #fafafa;
+  height: 80px;
+  line-height: 100px;
+  text-align: center; }
+  .vo-app-header--previous {
+    position: absolute;
+    top: -26px;
+    left: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #99796c; }
+
+.vo-icon--yellow {
+  color: #ffb42a; }
+
+.vo-modal {
+  margin: 32px 16px;
+  height: 740px;
+  border-radius: 5px;
+  background-color: #FFF;
+  overflow: auto; }
+  .vo-modal--show {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.8); }
+  .vo-modal__head {
+    z-index: 8;
+    position: sticky;
+    top: 0;
+    text-align: center;
+    height: 60px;
+    background-color: #99796c;
+    line-height: 60px;
+    border-radius: 5px 5px 0 0;
+    color: #FFF; }
+  .vo-modal__contents {
+    margin: 24px 16px; }
+  .vo-modal .vo-form__item p {
+    margin-bottom: 8px;
+    text-align: left;
+    color: #3B4D5A;
+    font-size: 14px;
+    font-weight: bold; }
+  .vo-modal .vo-form__item .vo-form__mail::before {
+    position: absolute;
+    content: '\f0e0';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 400; }
+  .vo-modal .vo-form__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 40px; }
+    .vo-modal .vo-form__wrapper input {
+      position: relative;
+      text-align: left;
+      width: 80vw;
+      height: 48px;
+      padding-left: 16px;
+      box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+      border: 2px solid #99796c;
+      border-radius: 40px;
+      color: #3B4D5A; }
+      .vo-modal .vo-form__wrapper input:focus {
+        border-radius: 40px; }
+      .vo-modal .vo-form__wrapper input::placeholder {
+        color: #3B4D5A;
+        opacity: .8; }
+
+.vo-profile__wrapper {
+  margin-bottom: 24px; }
+
+.vo-profile__header {
+  position: relative;
+  top: 0;
+  height: 140px;
+  width: 100%;
+  background-color: #fafafa; }
+
+.vo-profile__group {
+  position: absolute;
+  left: 24px;
+  top: 20px;
+  display: flex; }
+  .vo-profile__group img {
+    margin-right: 16px;
+    margin-bottom: 4px;
+    width: auto;
+    height: 100px;
+    border: 2px solid #FFF;
+    border-radius: 50%; }
+
+.vo-profile__name {
+  color: #3B4D5A;
+  margin-top: 14px;
+  margin-bottom: 4px;
+  font-size: 18px;
+  font-weight: bold; }
+
+.vo-profile__id {
+  color: #777;
+  font-size: 14px; }
+
+.vo-profile__follows {
+  display: flex; }
+
+.vo-profile__follow, .vo-profile__follower {
+  vertical-align: middle;
+  color: #3B4D5A;
+  margin-top: 16px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: bold; }
+
+.vo-profile__follow {
+  margin-right: 16px; }
+  .vo-profile__follow::after {
+    content: "フォロー";
+    font-size: 12px;
+    font-weight: normal; }
+
+.vo-profile__follower::after {
+  content: "フォロワー";
+  font-size: 12px;
+  font-weight: normal; }
+
+.vo-result {
+  margin-top: 16px;
+  border: 1px solid #99796c; }
+  .vo-result--list {
+    height: 300px;
+    overflow: scroll; }
+  .vo-result--list__info {
+    padding: 16px 24px;
+    border-bottom: 1px solid #99796c;
+    color: #3B4D5A; }
+    .vo-result--list__info:last-child {
+      border-bottom: none; }
+    .vo-result--list__info-name {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 8px; }
+    .vo-result--list__info-map {
+      font-size: 12px; }
+      .vo-result--list__info-map i {
+        margin-right: 3px; }
+  .vo-result__wrapper .vo-result--title {
+    font-size: 12px;
+    color: #777; }
+
+.is-selected {
+  background-color: rgba(153, 121, 108, 0.2); }
+
+.vo-selectbox {
+  width: 100%;
+  height: 48px;
+  margin-left: 8px;
+  padding: 16px; }
+  .vo-selectbox__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px; }
+  .vo-selectbox--title {
+    white-space: nowrap;
+    color: #3B4D5A;
+    font-weight: bold; }
+
+.vo-title {
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: #3B4D5A; }
+  .vo-title--h2 {
+    font-size: 28px; }
+  .vo-title--h3 {
+    font-size: 22px; }
+  .vo-title--h4 {
+    font-size: 18px; }
+  .vo-title--h5 {
+    font-size: 14px; }
+
+.tab-wrap {
+  display: flex;
+  overflow-y: scroll;
+  margin: 16px 12px 0 12px; }
+  .tab-wrap::-webkit-scrollbar {
+    display: none; }
+
+.tab-wrap:after {
+  content: '';
+  width: 100%;
+  height: 3px;
+  background: DeepSkyBlue;
+  display: block;
+  order: -1; }
+
+.tab-label {
+  color: White;
+  background: LightGray;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  text-align: center;
+  padding: 10px 18px;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 5px 5px 0 0;
+  flex: 1; }
+
+.tab-contents {
+  padding: 16px; }
+
+.tab-label:not(:last-of-type) {
+  margin-right: 3px; }
+
+/* アクティブなタブ */
+.tab-switch:checked + .tab-label {
+  background: #99796c; }
+
+.tab-switch:checked + .tab-label + .tab-content {
+  height: auto;
+  overflow: auto;
+  padding: 15px;
+  opacity: 1;
+  transition: .5s opacity;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); }
+
+/* ラジオボタン非表示 */
+.tab-switch {
+  display: none; }
+
+.vu-mt01 {
+  margin-top: 1px !important; }
+
+.vu-mb01 {
+  margin-bottom: 1px !important; }
+
+.vu-mr01 {
+  margin-right: 1px !important; }
+
+.vu-ml01 {
+  margin-left: 1px !important; }
+
+.vu-mt02 {
+  margin-top: 2px !important; }
+
+.vu-mb02 {
+  margin-bottom: 2px !important; }
+
+.vu-mr02 {
+  margin-right: 2px !important; }
+
+.vu-ml02 {
+  margin-left: 2px !important; }
+
+.vu-mt08 {
+  margin-top: 8px !important; }
+
+.vu-mb08 {
+  margin-bottom: 8px !important; }
+
+.vu-mr08 {
+  margin-right: 8px !important; }
+
+.vu-ml08 {
+  margin-left: 8px !important; }
+
+.vu-mt16 {
+  margin-top: 16px !important; }
+
+.vu-mb16 {
+  margin-bottom: 16px !important; }
+
+.vu-mr16 {
+  margin-right: 16px !important; }
+
+.vu-ml16 {
+  margin-left: 16px !important; }
+
+.vu-mt24 {
+  margin-top: 24px !important; }
+
+.vu-mb24 {
+  margin-bottom: 24px !important; }
+
+.vu-mr24 {
+  margin-right: 24px !important; }
+
+.vu-ml24 {
+  margin-left: 24px !important; }
+
+.vu-flex {
+  display: flex !important; }
+
+.vu-flex--justify__space-around {
+  justify-content: space-around !important; }
+
+.vu-flex--justify__space-between {
+  justify-content: space-between; }
+
+.vu-flex--wrap__wrap {
+  flex-wrap: wrap !important; }

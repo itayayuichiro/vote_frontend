@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<title>
+    Vote
+</title>
+<!-- <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}"/> -->
+<script>
+</script>
+<!-- Styles -->
+<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+<link href="./css/destyle.css" rel="stylesheet">
+<link href="./css/style.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r84/three.min.js"></script>
+<script src="./js/custom.js"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+<!– Global site tag (gtag.js) – Google Analytics –>
+<script async src=”https://www.googletagmanager.com/gtag/js?id=G-LHBXWHPT2L”></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag(‘js’, new Date());
+
+  gtag(‘config’, ‘G-LHBXWHPT2L’);
+</script>
+<!-- Ptengine Tag -->
+<script src="https://js.ptengine.jp/1anrb11n.js"></script>
+<!-- End Ptengine Tag -->
+
+</head>
+<body>
+  <div class="vo-app-header">
+    <h1 class="vo-title vo-title--h4">みんなのvote</h1>
+  </div>
+  <div class="vo-selectbox__wrapper">
+    <div class="vo-selectbox--title">
+      エリア
+    </div>
+    <select class="vo-selectbox" name="area">
+      <option value="">全国</option>
+      <option value="北海道">北海道</option>
+      <option value="青森県,岩手県,宮城県,秋田県,山形県,福島県">東北</option>
+      <option value="茨城県,栃木県,群馬県,埼玉県,千葉県,東京都,神奈川県">関東</option>
+      <option value="東京">東京23区内</option>
+      <option value="東京">東京23区外</option>
+      <option value="新潟県,富山県,石川県,福井県,山梨県,長野県,岐阜県,静岡県,愛知県">中部</option>
+      <option value="大阪府,京都府,兵庫県,奈良県,三重県,滋賀県,和歌山県">近畿</option>
+      <option value="鳥取県,島根県,岡山県,広島県,山口県,徳島県,香川県,愛媛県,高知県">中国・四国</option>
+      <option value="福岡県,佐賀県,長崎県,熊本県,大分県,宮崎県,鹿児島県">九州</option>
+      <option value="沖縄県">沖縄</option>
+    </select>
+  </div>
+  <div class="tab-wrap">
+  </div>
+  <div class="tab-contents">
+    <div class="vo-card--wrapper">
+      <!-- <div class="vo-card vo-card--wide">
+        <a href="https://tabelog.com/tokyo/A1308/A130802/13015251/">
+          <div class="vo-card__rank vo-card__rank--1st">
+            1st
+          </div>
+          <div class="vo-card__title">
+            <p>日本料理亭 すまし</p>
+          </div>
+          <div class="vo-card__place">
+            <p><i class="fas fa-map-marker-alt"></i>東京都中野区弥生町１丁目９</p>
+          </div>
+        </a>
+      </div>
+      <div class="vo-card vo-card--wide">
+        <a href="https://tabelog.com/tokyo/A1308/A130802/13015251/">
+          <div class="vo-card__rank vo-card__rank--2nd">
+            2nd
+          </div>
+          <div class="vo-card__title">
+            <p>すしざんまい 東京銀座店</p>
+          </div>
+          <div class="vo-card__place">
+            <p><i class="fas fa-map-marker-alt"></i>東京都中央区銀座６丁目４−６ 646ビル 1F</p>
+          </div>
+        </a>
+      </div>
+      <div class="vo-card vo-card--wide">
+        <a href="https://tabelog.com/tokyo/A1308/A130802/13015251/">
+          <div class="vo-card__rank vo-card__rank--3rd">
+            3rd
+          </div>
+          <div class="vo-card__title">
+            <p>すし三郎</p>
+          </div>
+          <div class="vo-card__place">
+            <p><i class="fas fa-map-marker-alt"></i>東京都渋谷区３丁目４-６</p>
+          </div>
+        </a>
+      </div> -->
+    </div>
+  </div>
+  <footer class="vo-footer">
+  <ul class="vo-footer__list">
+    <li class="vo-footer__item">
+      <a href="ranking.html">
+        <i class="fas fa-crown"></i>
+        <p>ランキング</p>
+      </a>
+    </li>
+    <li class="vo-footer__item">
+      <a href="mypage.html">
+        <i class="fas fa-user"></i>
+        <p>マイページ</p>
+      </a>
+    </li>
+  </ul>
+</footer>
+  <script>
+    const number = ["1st","2nd","3rd"];
+    var category_id = "";
+    var prefectures = "";
+      window.onload = function() {
+        $.ajax('https://kensyu.jeez.jp/api/category',
+            {
+              type: 'get'
+            }
+          )
+          .done(function(data) {
+            var categories = data['result']['categories'];
+            for(var i = 0; i < categories.length; i++){
+              var id = ("00" + (i + 1) ).slice( -2 );
+              var checked = i == 0 ? true : false;
+              $('.tab-wrap').append(''+
+                '<input id="TAB02-'+id+'" data-id="'+categories[i]['id']+'" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-'+id+'">'+categories[i]['name']+'</label>'
+              );
+            }
+            $('.vo-selectbox').change(function(){
+              prefectures = $(this).val();
+              loadRanking();
+            })
+            $('.tab-switch').click(function(){
+              category_id = $(this).data('id');
+              loadRanking();
+            });
+            $('.tab-switch').eq(0).prop("checked",true);
+            category_id = categories[0]['id'];
+            loadRanking();
+          });
+      };
+
+      function loadRanking(){
+        $.ajax('https://kensyu.jeez.jp/api/ranking?category_id='+category_id+'&prefectures='+prefectures,
+            {
+              type: 'get'
+            }
+          )
+          .done(function(data) {
+            $('.vo-card--wrapper').empty();
+            var rankings = data['result']['rankings'];
+            for(var i = 0;i < rankings.length;i++){
+              $('.vo-card--wrapper').append(''+
+                '<div class="vo-card vo-card--wide">'+
+                  '<a href="https://www.google.com/maps/place/?q=place_id:'+rankings[i]['place_id']+'">'+
+                    '<div class="vo-card__rank vo-card__rank--'+number[i]+'">'+
+                    number[i]+
+                    '</div>'+
+                    '<div class="vo-card__title">'+
+                      '<p>'+rankings[i]['place_name']+'</p>'+
+                    '</div>'+
+                    '<div class="vo-card__place">'+
+                      '<p><i class="fas fa-map-marker-alt"></i>'+rankings[i]['address']+'</p>'+
+                    '</div>'+
+                  '</a>'+
+                '</div>'
+                );
+            }
+          });
+      }
+  </script>
+</body>
+</html>

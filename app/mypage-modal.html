@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<title>
+    Vote
+</title>
+<!-- <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}"/> -->
+<script>
+</script>
+<!-- Styles -->
+<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+<link href="./css/destyle.css" rel="stylesheet">
+<link href="./css/style.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r84/three.min.js"></script>
+<script src="./js/custom.js"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+<!– Global site tag (gtag.js) – Google Analytics –>
+<script async src=”https://www.googletagmanager.com/gtag/js?id=G-LHBXWHPT2L”></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag(‘js’, new Date());
+
+  gtag(‘config’, ‘G-LHBXWHPT2L’);
+</script>
+<!-- Ptengine Tag -->
+<script src="https://js.ptengine.jp/1anrb11n.js"></script>
+<!-- End Ptengine Tag -->
+
+</head>
+<body>
+  <div class="vo-app-header vu-mb24">
+    <a href="mypage.html" class="vo-app-header--previous"><i class="fas fa-chevron-left"></i> もどる</a>
+    <h1 class="vo-title vo-title--h4">寿司のおすすめ</h1>
+  </div>
+  <div class="vo-contents">
+    <h2 class="vo-title vo-title--h5 vu-mb16"><i class="vo-icon vo-icon--yellow vu-mr08 fas fa-star"></i>voteする</h2>
+    <div class="vo-card--wrapper">
+      <div class="vo-card vo-card--wide">
+        <a href="#">
+          <div class="vo-card__rank vo-card__rank--1st">
+            1st
+          </div>
+          <div class="vo-card__image">
+            <img src="./assets/img/pizza.png">
+          </div>
+          <div class="vo-card__title">
+            <p>日本料理亭 すまし</p>
+          </div>
+          <div class="vo-card__place">
+            <p><i class="vu-mr08 fas fa-map-marker-alt"></i>東京都中野区弥生町１丁目９</p>
+          </div>
+        </a>
+        <div class="vo-modal--show">
+          <div class="vo-modal">
+            <div class="vo-modal__head">
+              <h3 class="vo-title--h4">
+              </h3>
+            </div>
+            <div class="vo-modal__contents">
+              <div class="vo-form">
+                <div class="vo-form__wrapper vu-mb08">
+                  <div class="vo-form__item">
+                    <input class="vo-form__place" id="place" type="text" placeholder="場所" value="">
+                  </div>
+                  <div class="vo-form__item">
+                    <input class="vo-form__restaurant" id="keyword" type="text" placeholder="キーワード" value="">
+                  </div>
+                </div>
+                <div class="vo-button__wrapper vu-mb24">
+                  <button class="vo-button vo-button--primary vo-button--large" id="search"><a href="#">検索</a></button>
+                </div>
+              </div>
+              <div class="vo-result__wrapper">
+                <!-- <h5 class="vo-result--title vu-ml08">検索結果 <span>7</span>件</h5> -->
+                <div class="vo-result">
+                  <ul class="vo-result--list">
+                    <!-- <li class="vo-result--list__info is-selected">
+                      <p class="vo-result--list__info-name">江戸前すし吉</p>
+                      <p class="vo-result--list__info-map"><i class="fas fa-map-marker-alt"></i>東京都中野区弥生町１丁目９</p>
+                    </li>
+                    <li class="vo-result--list__info">
+                      <p class="vo-result--list__info-name">江戸前すし吉</p>
+                      <p class="vo-result--list__info-map"><i class="fas fa-map-marker-alt"></i>東京都中野区弥生町１丁目９</p>
+                    </li>
+                    <li class="vo-result--list__info">
+                      <p class="vo-result--list__info-name">江戸前すし吉</p>
+                      <p class="vo-result--list__info-map"><i class="fas fa-map-marker-alt"></i>東京都中野区弥生町１丁目９</p>
+                    </li>
+                    <li class="vo-result--list__info">
+                      <p class="vo-result--list__info-name">江戸前すし吉</p>
+                      <p class="vo-result--list__info-map"><i class="fas fa-map-marker-alt"></i>東京都中野区弥生町１丁目９</p>
+                    </li>
+                    <li class="vo-result--list__info">
+                      <p class="vo-result--list__info-name">江戸前すし吉</p>
+                      <p class="vo-result--list__info-map"><i class="fas fa-map-marker-alt"></i>東京都中野区弥生町１丁目９</p>
+                    </li>
+                    <li class="vo-result--list__info">
+                      <p class="vo-result--list__info-name">江戸前すし吉</p>
+                      <p class="vo-result--list__info-map"><i class="fas fa-map-marker-alt"></i>東京都中野区弥生町１丁目９</p>
+                    </li>
+                    <li class="vo-result--list__info">
+                      <p class="vo-result--list__info-name">江戸前すし吉</p>
+                      <p class="vo-result--list__info-map"><i class="fas fa-map-marker-alt"></i>東京都中野区弥生町１丁目９</p>
+                    </li> -->
+                  </ul>
+                </div>
+              </div>
+              <div class="vo-button__wrapper vu-mt24">
+                <button class="vo-button vo-button--secondary vo-button--large" id="back"><a href="#">キャンセル</a></button>
+                <button class="vo-button vo-button--primary vo-button--large" id="submit"><a href="#">決定</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="vo-card vo-card--wide">
+        <a href="">
+          <div class="vo-card__rank vo-card__rank--2nd">
+            2nd
+          </div>
+          <div class="vo-card__image">
+            <img src="./assets/img/pizza.png">
+          </div>
+          <div class="vo-card__title">
+            <p>すしざんまい 東京銀座店</p>
+          </div>
+          <div class="vo-card__place">
+            <p><i class="vu-mr08 fas fa-map-marker-alt"></i>東京都中央区銀座６丁目４−６ 646ビル 1F</p>
+          </div>
+        </a>
+      </div>
+      <div class="vo-card vo-card--wide vo-card--empty">
+        <a href="">
+          <div class="vo-card__rank vo-card__rank--3rd">
+            3rd
+          </div>
+          <div class="vo-card__image">
+            
+          </div>
+          <div class="vo-card__title">
+            <p>未設定</p>
+          </div>
+          <div class="vo-card__place">
+            <p><i class="vu-mr08 fas fa-map-marker-alt"></i>-</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div id="modal" style="display:none;">
+      <p>これはサンプルです。</p>
+    </div>
+  </div>
+  <footer class="vo-footer">
+  <ul class="vo-footer__list">
+    <li class="vo-footer__item">
+      <a href="ranking.html">
+        <i class="fas fa-crown"></i>
+        <p>ランキング</p>
+      </a>
+    </li>
+    <li class="vo-footer__item">
+      <a href="mypage.html">
+        <i class="fas fa-user"></i>
+        <p>マイページ</p>
+      </a>
+    </li>
+  </ul>
+</footer>
+  <script>
+    const number = ["1st","2nd","3rd"];
+    window.onload = function() {
+      $.ajax('https://kensyu.jeez.jp/api/category',
+        {
+          type: 'get'
+        }
+      )
+      .done(function(data) {
+        var categories = data['result']['categories'];
+        for(var i = 0; i < categories.length; i++){
+          if(categories[i]['id'] == getParam('category')){
+            $('h3').text(categories[i]['name'] + " " + number[i] + " vote");
+          }
+        }
+      });
+    }
+    $(function() {
+      $('#back').click(function(){
+        location.href = "mypage-detail.html?category="+getParam('category');
+      })
+      // ［検索］ボタンクリックで検索開始
+      $('#search').click(function() {
+        var place = $('#place').val();
+        var keyword = $('#keyword').val();
+        $.ajax('https://kensyu.jeez.jp/api/shops?area='+place+'&keyword='+keyword)
+        // 検索成功時にはページに結果を反映
+        .done(function(data) {
+          for(var i = 0;i < data['result'].length;i++){
+            $('.vo-result--list').append(''+
+              '<li class="vo-result--list__info">'+
+                '<input type="hidden" value="'+data['result'][i]['id']+'">'+
+                '<p class="vo-result--list__info-name">'+data['result'][i]['name']+'</p>'+
+                '<p class="vo-result--list__info-map"><i class="fas fa-map-marker-alt"></i>'+data['result'][i]['address']+'</p>'+
+              '</li>'
+            );
+          }
+          $('.vo-result--list__info').click(function(){
+            $('.vo-result--list__info').removeClass('is-selected');
+            $(this).addClass('is-selected');
+          })
+          // ランキング登録実行
+          $('#submit').click(function() {
+            var place_id = $('.is-selected input').val();
+            var post_request =  {
+                crossDomain: true,
+                headers: { 
+                  "token" : getToken()
+                },
+                type: 'post',
+                data: {"place_id":place_id,"no":getParam('no'),"category_id":getParam('category')},
+                dataType : "json"
+            }
+            var edit_request =  {
+                crossDomain: true,
+                headers: { 
+                  "token" : getToken()
+                },
+                type: 'put',
+                data: {"place_id":place_id,"no":getParam('no'),"category_id":getParam('category')},
+                dataType : "json"
+            }
+            $.ajax('https://kensyu.jeez.jp/api/ranking',
+              getParam('type') == "create" ? post_request : edit_request
+            )
+            // 検索成功時にはページに結果を反映
+            .done(function(data) {
+              location.href = "mypage-detail.html?category="+getParam('category');
+            })
+            // 検索失敗時には、その旨をダイアログ表示
+            .fail(function(data, status, xhr) {
+              if (data.status === 401) {
+                alert("ログイン認証に失敗しました");
+                location.href="./login.html";
+              }else{
+                alert("予期せぬエラーが発生しました");
+              }
+            });
+          });
+        })
+        // 検索失敗時には、その旨をダイアログ表示
+        .fail(function(error) {
+          console.log(error);
+          window.alert('検索に失敗しました');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

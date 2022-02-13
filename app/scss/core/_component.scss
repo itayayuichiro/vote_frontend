@@ -1,0 +1,535 @@
+@charset "utf-8";
+
+// layout ----------
+
+body {
+  background-color: rgba($main-c, .1);
+}
+
+.vo-splash {
+  background-color: $light-gray-c;
+}
+
+.vo-contents {
+  margin: 0 $margin * 2;
+}
+
+// button ----------
+.vo-button {
+  display: block;
+  margin: 0 auto;
+  height: 44px;
+  width: 124px;
+  border-radius: 5px;
+  color: $white-c;
+  font-size: $normal;
+  text-align: center;
+  a {
+    display: block;
+    padding: 12px $padding * 2;
+  }
+  &--primary {
+    background-color: $main-c;
+  }
+  &--secondary {
+    background-color: $white-c;
+    border: 1px solid $main-c;
+    color: $main-c;
+  }
+  &__wrapper {
+    display: flex;
+  }
+}
+
+// card ----------
+.vo-card--wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  &::after {
+    display: block;
+    content:"";
+    width: 28vw;
+  }
+}
+.vo-card {
+  position: relative;
+  margin-bottom: $margin * 2;
+  box-shadow: $shadow-01;
+  background-color: $white-c;
+  width: 30%;
+  height: 142px;
+  text-align: center;
+  border-radius: $radius;
+  overflow: hidden;
+  position: relative;
+  &__rank {
+    z-index: 3;
+    display: inline-block;
+    position: absolute;
+    top: 8px;
+    left: 0;
+    height: 24px;
+    padding: 4px $padding * 3 4px $padding;
+    line-height: 15px;
+    font-size: $small;
+    font-weight: bold;
+    text-align: center;
+    color: $white-c;
+    box-sizing: border-box;
+    &::after {
+      position: absolute;
+      content: '';
+      width: 0px;
+      height: 0px;
+      z-index: 1;
+    }
+    &::after {
+      top: 0;
+      right: 0;
+      border-width: 12px 6px 12px 0px;
+      border-color: transparent #fff transparent transparent;
+      border-style: solid;
+    }
+    &--1st {
+      background: $gold-c;
+    }
+    &--2nd {
+      background: $silver-c;
+    }
+    &--3rd {
+      background: $bronze-c;
+    }
+  }
+  &:last-child {
+    margin-bottom: $margin * 10;
+  }
+  &__title {
+    line-height: 1.2;
+    color: $text-c-01;
+    font-size: $small;
+    font-weight: bold;
+  }
+  &__image {
+    margin-top: $margin * 2;
+    margin-bottom: 10px;
+    img {
+      width: 80px;
+    }
+  }
+}
+.vo-card--wide {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 60px;
+  padding: $padding * 6 $padding * 3 $padding * 3 $padding * 3;
+  text-align: left;
+  .vo-card {
+    &__title {
+      font-size: $normal;
+    }
+    &__place {
+      line-height: 1.5;
+      margin-top: $margin;
+      font-size: $small;
+      color: $text-c-02;
+      i {
+        margin-right: 3px;
+      }
+    }
+    &__edit-button {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      height: 40px;
+      width: 40px;
+      line-height: 40px;
+      text-align: center;
+      background-color: $main-c;
+      border-radius: 50%;
+      i {
+        color: $white-c;
+      }
+    }
+  }
+}
+
+// footer ----------
+.vo-footer {
+  z-index: 3;
+  position: fixed;
+  bottom: 0;
+  background-color: $main-c;
+  color: $white-c;
+  &__list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 56px;
+  }
+  &__item {
+    text-align: center;
+    a {
+      i {
+        margin-bottom: 4px;
+        font-size: $large;
+      }
+      p {
+        font-size: $smallS;
+      }
+    }
+  }
+}
+
+// form ----------
+.vo-form {
+  text-align: center;
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: $margin * 2;
+    input {
+      position: relative;
+      text-align: left;
+      width: 80vw;
+      height: 48px;
+      padding-left: $padding * 3;
+      box-shadow: $shadow-01;
+      border: 1px solid $main-c;
+      border-radius: 40px;
+      color: $main-c;
+      &:focus {
+        border-radius: 40px;
+        border-color: $white-c;
+      }
+      &::placeholder {
+        font-size: $normal;
+        color: $main-c;
+        opacity: .7;
+      }
+    }
+  }
+  &__item {
+    margin-bottom: $margin * 3;
+    p {
+      margin-bottom: $margin;
+      text-align: left;
+      color: $white-c;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .vo-form__mail::before {
+      position: absolute;
+      content: '\f0e0';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: bold;
+    }
+  }
+  .vo-form__item:last-of-type {
+    margin-bottom: $margin * 2;
+  }
+  &__help {
+    margin-top: - $margin * 1;
+    a {
+      font-size: 14px;
+      color: $main-c;
+      text-decoration: underline;
+    }
+  }
+}
+
+// app-header -----
+.vo-app-header {
+  position: relative;
+  background-color: $light-gray-c;
+  height: 80px;
+  line-height: 100px;
+  text-align: center;
+  &--previous {
+    position: absolute;
+    top: -26px;
+    left: 20px;
+    font-size: $small;
+    font-weight: bold;
+    color: $main-c;
+  }
+}
+
+// icon -----------
+.vo-icon {
+  &--yellow {
+    color: $yellow-c;
+  }
+}
+
+// modal ----------
+.vo-modal {
+  margin: $margin * 4 $margin * 2;
+  height: 740px;
+  border-radius: 5px;
+  background-color: $white-c;
+  overflow: auto;
+  &--show {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, .8);
+  }
+  &__trigger {
+
+  }
+  &__head {
+    z-index: 8;
+    position: sticky;
+    top: 0;
+    text-align: center;
+    height: 60px;
+    background-color: $main-c;
+    line-height: 60px;
+    border-radius: 5px 5px 0 0;
+    color: $white-c;
+  }
+  &__contents {
+    margin: $margin * 3 $margin * 2;
+  }
+  .vo-form {
+    &__item {
+      p {
+        margin-bottom: $margin;
+        text-align: left;
+        color: $text-c-01;
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .vo-form__mail::before {
+        position: absolute;
+        content: '\f0e0';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 400;
+      }
+    }
+    &__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-bottom: $margin * 5;
+      input {
+        position: relative;
+        text-align: left;
+        width: 80vw;
+        height: 48px;
+        padding-left: $padding * 2;
+        box-shadow: $shadow-01;
+        border: 2px solid $main-c;
+        border-radius: 40px;
+        color: $text-c-01;
+        &:focus {
+          border-radius: 40px;
+        }
+        &::placeholder {
+          color: $text-c-01;
+          opacity: .8;
+        }
+      }
+    }
+  }
+}
+
+// profile ----------
+.vo-profile {
+  &__wrapper {
+    margin-bottom: $margin * 3;
+  }
+  &__header {
+    position: relative;
+    top: 0;
+    height: 140px;
+    width: 100%;
+    background-color: $light-gray-c;
+  }
+  &__group {
+    position: absolute;
+    left: 24px;
+    top: 20px;
+    display: flex;
+    img {
+      margin-right: $margin * 2;
+      margin-bottom: 4px;
+      width: auto;
+      height: 100px;
+      border: 2px solid $white-c;
+      border-radius: 50%;
+    }
+  }
+  &__name {
+    color: $text-c-01;
+    margin-top: 14px;
+    margin-bottom: 4px;
+    font-size: $large;
+    font-weight: bold;
+  }
+  &__id {
+    color: $text-c-03;
+    font-size: $normal;
+  }
+  &__follows {
+    display: flex;
+  }
+  &__follow, &__follower {
+    vertical-align: middle;
+    color: $text-c-01;
+    margin-top: $margin * 2;
+    margin-bottom: 4px;
+    font-size: $normal;
+    font-weight: bold;
+  }
+  &__follow {
+    margin-right: $margin * 2;
+    &::after {
+      content: "フォロー";
+      font-size: $small;
+      font-weight: normal;
+    }
+  }
+  &__follower {
+    &::after {
+      content: "フォロワー";
+      font-size: $small;
+      font-weight: normal;
+    }
+  }
+}
+// result ---------
+.vo-result {
+  margin-top: $margin * 2;
+  border: 1px solid $main-c;
+  &--list {
+    height: 300px;
+    overflow: scroll;
+  }
+  &--list__info {
+    padding: $padding * 2 $padding * 3;
+    border-bottom: 1px solid $main-c;
+    color: $text-c-01;
+    &:last-child {
+      border-bottom: none;
+    }
+    &-name {
+      font-size: $normal;
+      font-weight: bold;
+      margin-bottom: $margin;
+    }
+    &-map {
+      font-size: $small;
+      i {
+        margin-right: 3px;
+      }
+    }
+  }
+  &__wrapper {
+    .vo-result--title {
+      font-size: $small;
+      color: $text-c-03;
+    }
+  }
+}
+.is-selected {
+  background-color: rgba($main-c, .2);
+}
+
+// selectbox ------
+.vo-selectbox {
+  width: 100%;
+  height: 48px;
+  margin-left: $margin;
+  padding: $padding * 2;
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: $margin * 2;
+  }
+  &--title {
+    white-space: nowrap;
+    color: $text-c-01;
+    font-weight: bold;
+  }
+}
+
+// title ----------
+.vo-title {
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: $text-c-01;
+  &--h2 {
+    font-size: $largeLL;
+  }
+  &--h3 {
+    font-size: $largeL;
+  }
+  &--h4 {
+    font-size: $large;
+  }
+  &--h5 {
+    font-size: $normal;
+  }
+}
+
+// etc ------------
+.tab-wrap {
+  display: flex;
+  overflow-y: scroll;
+  margin: $margin * 2 12px 0 12px;
+  &::-webkit-scrollbar {
+    display:none;
+  }
+}
+.tab-wrap:after {
+  content: '';
+  width: 100%;
+  height: 3px;
+  background: DeepSkyBlue;
+  display: block;
+  order: -1;
+}
+.tab-label {
+  color: White;
+  background: LightGray;
+  font-size: $normal;
+  font-weight: bold;
+  white-space: nowrap;
+  text-align: center;
+  padding: 10px 18px;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 5px 5px 0 0;
+  flex: 1;
+}
+.tab-contents {
+  padding: $padding * 2;
+}
+.tab-label:not(:last-of-type) {
+  margin-right: 3px;
+}
+/* アクティブなタブ */
+.tab-switch:checked+.tab-label {
+  background: $main-c;
+}
+.tab-switch:checked+.tab-label+.tab-content {
+  height: auto;
+  overflow: auto;
+  padding: 15px;
+  opacity: 1;
+  transition: .5s opacity;
+  box-shadow: 0 0 3px rgba(0,0,0,.2);
+}
+/* ラジオボタン非表示 */
+.tab-switch {
+  display: none;
+}

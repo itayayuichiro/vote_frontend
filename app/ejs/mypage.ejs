@@ -1,75 +1,157 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>
-        Vote
-    </title>
-    <!-- <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}"/> -->
-    <script>
-    </script>
-    <!-- Styles -->
-<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
-    <link href="./css/style.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-    <script src="./js/custom.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/threejs/r84/three.min.js"></script>
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <%- include('config/_head'); %>
 
 </head>
 <body>
-  <header>
-    おすすめの店舗
-    <a href="./login.html">ログイン</a>
-  </header>
-  <div class="main">
-    <div id="ranking">
-      <div class="content">
+  <%- include('component/_profile'); %>
+  <div class="vo-contents">
+    <h2 class="vo-title vo-title--h5 vu-mb16"><i class="vo-icon vo-icon--yellow vu-mr08 fas fa-star"></i>あなたのvote</h2>
+    <div class="vo-card--wrapper">
+      <!-- <div class="vo-card">
+        <a href="mypage-detail.html">
+          <div class="vo-card__image">
+            <img src="./assets/img/pizza.png">
+          </div>
+          <div class="vo-card__title">
+            <p>寿司</p>
+          </div>
+        </a>
       </div>
+      <div class="vo-card">
+        <div class="vo-card__image">
+          <img src="./assets/img/pizza.png">
+        </div>
+        <div class="vo-card__title">
+          <p>カレー</p>
+        </div>
+      </div>
+      <div class="vo-card">
+        <div class="vo-card__image">
+          <img src="./assets/img/pizza.png">
+        </div>
+        <div class="vo-card__title">
+          <p>パスタ</p>
+        </div>
+      </div>
+      <div class="vo-card">
+        <div class="vo-card__image">
+          <img src="./assets/img/pizza.png">
+        </div>
+        <div class="vo-card__title">
+          <p>ピザ</p>
+        </div>
+      </div>
+      <div class="vo-card">
+        <div class="vo-card__image">
+          <img src="./assets/img/pizza.png">
+        </div>
+        <div class="vo-card__title">
+          <p>うどん/そば</p>
+        </div>
+      </div>
+      <div class="vo-card">
+        <div class="vo-card__image">
+          <img src="./assets/img/pizza.png">
+        </div>
+        <div class="vo-card__title">
+          <p>タピオカ</p>
+        </div>
+      </div>
+      <div class="vo-card">
+        <div class="vo-card__image">
+          <img src="./assets/img/pizza.png">
+        </div>
+        <div class="vo-card__title">
+          <p>中華</p>
+        </div>
+      </div>
+      <div class="vo-card">
+        <div class="vo-card__image">
+          <img src="./assets/img/pizza.png">
+        </div>
+        <div class="vo-card__title">
+          <p>ラーメン</p>
+        </div>
+      </div>
+      <div class="vo-card">
+        <div class="vo-card__image">
+          <img src="./assets/img/pizza.png">
+        </div>
+        <div class="vo-card__title">
+          <p>ハンバーグ</p>
+        </div>
+      </div>
+      <div class="vo-card">
+        <div class="vo-card__image">
+          <img src="./assets/img/pizza.png">
+        </div>
+        <div class="vo-card__title">
+          <p>ハンバーガー</p>
+        </div>
+      </div>
+      <div class="vo-card">
+        <div class="vo-card__image">
+          <img src="./assets/img/pizza.png">
+        </div>
+        <div class="vo-card__title">
+          <p>オムライス</p>
+        </div>
+      </div> -->
+    </div>
+    <div id="modal" style="display:none;">
+      <p>これはサンプルです。</p>
     </div>
   </div>
-  <footer>
-    <div class="footer_menus">
-      <a href="/timeline">
-        <div class="footer_menu" id="timeline">
-          <img src="./assets/img/icon_ranking.png" /><br />
-          <span id="footer_trend">タイムライン</span>
-        </div>
-      </a>
-      <a href="/comedian">
-        <div class="footer_menu" id="ranking">
-          <img src="./assets/img/batu.png" /><br />
-          <span id="footer_ranking">保留</span>
-        </div>
-      </a>
-      <a href="./mypage.html">
-        <div class="footer_menu" id="mypage">
-          <img src="./assets/img/icon_user.png" /><br />
-          <span id="footer_mypage">マイページ</span>
-        </div>
-      </a>
-    </div>
-  </footer>
+  <%- include('component/_footer'); %>
   <script>
       window.onload = function() {
-        $.ajax('http://kensyu.jeez.jp/api/mypage',
+        $.ajax('https://kensyu.jeez.jp/api/mypage',
           {
             headers: {
-              "token" : "d36072a930278c2"
+              "token" : getToken()
             },
             type: 'get'
           }
         )
         // 検索成功時にはページに結果を反映
         .done(function(data) {
-          console.log(data);
+          console.log(data['user']);
+          $('.vo-profile__name').text("ゲストユーザー"+data["result"]["user"]["id"]);
+        })
+        // 認証失敗はloginページに
+        .fail(function(data, status, xhr) {
+          if (data.status === 401) {
+            alert("ログイン認証に失敗しました");
+            location.href="./login.html";
+          }else{
+            alert("予期せぬエラーが発生しました");
+          }
+        });
+
+        $.ajax('https://kensyu.jeez.jp/api/category',
+          {
+            type: 'get'
+          }
+        )
+        // 検索成功時にはページに結果を反映
+        .done(function(data) {
+          var categories = data['result']['categories'];
+          for(var i = 0; i < categories.length; i++){
+            $('.vo-card--wrapper').append(
+            '<div class="vo-card">'+
+              '<a href="mypage-detail.html?category='+categories[i]['id']+'">'+
+                '<div class="vo-card__image">'+
+                  '<img src="https://kensyu.jeez.jp'+categories[i]['image']+'">'+
+                '</div>'+
+                '<div class="vo-card__title">'+
+                  '<p>'+categories[i]['name']+'</p>'+
+                '</div>'+
+              '</a>'+
+            '</div>'
+            );
+          }
         })
         // 検索失敗時には、その旨をダイアログ表示
         .fail(function(data) {
