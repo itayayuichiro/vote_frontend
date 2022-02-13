@@ -154,6 +154,9 @@ body {
     }
   }
 }
+.vo-card--unrank {
+  padding-top: $padding * 3;
+}
 
 // footer ----------
 .vo-footer {
@@ -348,7 +351,7 @@ body {
   &__header {
     position: relative;
     top: 0;
-    height: 140px;
+    height: 120px;
     width: 100%;
     background-color: $light-gray-c;
   }
@@ -361,14 +364,14 @@ body {
       margin-right: $margin * 2;
       margin-bottom: 4px;
       width: auto;
-      height: 100px;
+      height: 80px;
       border: 2px solid $white-c;
       border-radius: 50%;
     }
   }
   &__name {
     color: $text-c-01;
-    margin-top: 14px;
+    margin-top: $margin * 3;
     margin-bottom: 4px;
     font-size: $large;
     font-weight: bold;
@@ -449,10 +452,11 @@ body {
   margin-left: $margin;
   padding: $padding * 2;
   &__wrapper {
+    z-index: 4;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: $margin * 2;
+    padding: $padding * 2;
   }
   &--title {
     white-space: nowrap;
@@ -482,9 +486,10 @@ body {
 
 // etc ------------
 .tab-wrap {
+  z-index: 4;
   display: flex;
   overflow-y: scroll;
-  margin: $margin * 2 12px 0 12px;
+  margin: 0 12px;
   &::-webkit-scrollbar {
     display:none;
   }
@@ -512,7 +517,9 @@ body {
   flex: 1;
 }
 .tab-contents {
-  padding: $padding * 2;
+  height: 520px;
+  overflow: auto;
+  margin: $margin * 2;
 }
 .tab-label:not(:last-of-type) {
   margin-right: 3px;
