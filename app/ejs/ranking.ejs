@@ -16,9 +16,9 @@
       <option value="">全国</option>
       <option value="北海道">北海道</option>
       <option value="青森県,岩手県,宮城県,秋田県,山形県,福島県">東北</option>
-      <option value="茨城県,栃木県,群馬県,埼玉県,千葉県,東京都,神奈川県">関東</option>
-      <option value="東京">東京23区内</option>
-      <option value="東京">東京23区外</option>
+      <option value="茨城県,栃木県,群馬県,埼玉県,千葉県,神奈川県">関東</option>
+      <option value="東京23区内">東京23区内</option>
+      <option value="東京23区外">東京23区外</option>
       <option value="新潟県,富山県,石川県,福井県,山梨県,長野県,岐阜県,静岡県,愛知県">中部</option>
       <option value="大阪府,京都府,兵庫県,奈良県,三重県,滋賀県,和歌山県">近畿</option>
       <option value="鳥取県,島根県,岡山県,広島県,山口県,徳島県,香川県,愛媛県,高知県">中国・四国</option>
@@ -76,6 +76,7 @@
     const number = ["1st","2nd","3rd"];
     var category_id = "";
     var prefectures = "";
+    var is23Wards = "";
       window.onload = function() {
         $.ajax('https://kensyu.jeez.jp/api/category',
             {
@@ -92,7 +93,15 @@
               );
             }
             $('.vo-selectbox').change(function(){
-              prefectures = $(this).val();
+              if ($(this).val() === '東京23区内') {
+                prefectures = "東京都";
+                is23Wards = true;
+              }else if($(this).val() === '東京23区外'){
+                prefectures = "東京都";
+                is23Wards = false;
+              }else{
+                prefectures = $(this).val();
+              }
               loadRanking();
             })
             $('.tab-switch').click(function(){
@@ -106,7 +115,7 @@
       };
 
       function loadRanking(){
-        $.ajax('https://kensyu.jeez.jp/api/ranking?category_id='+category_id+'&prefectures='+prefectures,
+        $.ajax('https://kensyu.jeez.jp/api/ranking?category_id='+category_id+'&prefectures='+prefectures+'&is23Wards='+is23Wards,
             {
               type: 'get'
             }
