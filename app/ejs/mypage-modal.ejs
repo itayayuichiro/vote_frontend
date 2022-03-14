@@ -156,6 +156,7 @@
         $.ajax('https://kensyu.jeez.jp/api/shops?area='+place+'&keyword='+keyword)
         // 検索成功時にはページに結果を反映
         .done(function(data) {
+          $('.vo-result--list').empty();
           for(var i = 0;i < data['result'].length;i++){
             $('.vo-result--list').append(''+
               '<li class="vo-result--list__info">'+
