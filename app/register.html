@@ -47,41 +47,41 @@
     <div class="vo-form">
       <div class="vo-form__wrapper">
         <div class="vo-form__item">
-          <input class="vo-form__mail" type="text" id="email" placeholder="メールアドレス / ID">
-        </div>
-        <div class="vo-form__item">
           <input class="vo-form__password" type="password" id="pass" placeholder="パスワード">
         </div>
-        <div class="vo-form__help">
-          <a href="">パスワードを忘れた方はこちら</a>
-        </div>
+        <div class="vo-form__item">
+          <input type="radio" id="non" name="gender" value="" checked>
+          <label for="non">未選択</label>
+          <input type="radio" id="male" name="gender" value="male">
+          <label for="non">男性</label>
+          <input type="radio" id="female" name="gender" value="female">
+          <label for="non">女性</label>
+          </div>
       </div>
-      <button class="vo-button vo-button--primary vo-button--large"><a href="#" id="login">ログイン</a></button>
-      <button class="vo-button vo-button--secondary vo-button--large vu-mt16"><a href="./register_mail.html">新規登録</a></button>
+      <button class="vo-button vo-button--primary vo-button--large"><a href="#" id="register">登録</a></button>
     </div>
   </div>
   <script>
     $(function() {
-      // ［検索］ボタンクリックで検索開始
-      $('#login').click(function() {
-        var email = $('#email').val();
+      const token = getParam('register_token');
+      console.log(token);
+      // ［登録］ボタンクリックで検索開始
+      $('#register').click(function() {
+        const gender = $('input:radio[name="gender"]:checked').val();
         var password = $('#pass').val();
-        $.ajax('https://kensyu.jeez.jp/api/login',
+        $.ajax('https://kensyu.jeez.jp/api/user',
           {
             type: 'post',
-            data: { "email" : email,"password":password },
+            data: { "token":token,"password":password,"gender" : gender },
             dataType : "json"
           }
         )
-        // 検索成功時にはページに結果を反映
         .done(function(data,status, xhr) {
-          
-          document.cookie = "token="+xhr.getResponseHeader("token");
-          location.href = "./mypage.html";
+          window.alert('会員登録に成功しました。ログイン画面からログインしてください。');
+          location.href = "./login.html";
         })
-        // 検索失敗時には、その旨をダイアログ表示
         .fail(function() {
-          window.alert('メールアドレス or パスワードが間違っています。');
+          window.alert('登録に失敗しました。');
         });
       });
     });

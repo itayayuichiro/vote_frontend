@@ -47,41 +47,31 @@
     <div class="vo-form">
       <div class="vo-form__wrapper">
         <div class="vo-form__item">
-          <input class="vo-form__mail" type="text" id="email" placeholder="メールアドレス / ID">
-        </div>
-        <div class="vo-form__item">
-          <input class="vo-form__password" type="password" id="pass" placeholder="パスワード">
-        </div>
-        <div class="vo-form__help">
-          <a href="">パスワードを忘れた方はこちら</a>
+          <input class="vo-form__mail" type="text" id="email" placeholder="メールアドレス">
         </div>
       </div>
-      <button class="vo-button vo-button--primary vo-button--large"><a href="#" id="login">ログイン</a></button>
-      <button class="vo-button vo-button--secondary vo-button--large vu-mt16"><a href="./register_mail.html">新規登録</a></button>
+      <button class="vo-button vo-button--primary vo-button--large"><a href="#" id="register">登録</a></button>
     </div>
   </div>
   <script>
     $(function() {
-      // ［検索］ボタンクリックで検索開始
-      $('#login').click(function() {
+      // 登録ボタン押下でメール送信
+      $('#register').click(function() {
         var email = $('#email').val();
-        var password = $('#pass').val();
-        $.ajax('https://kensyu.jeez.jp/api/login',
+        $.ajax('https://kensyu.jeez.jp/api/register_mail',
           {
             type: 'post',
-            data: { "email" : email,"password":password },
+            data: { "email" : email },
             dataType : "json"
           }
         )
         // 検索成功時にはページに結果を反映
         .done(function(data,status, xhr) {
-          
-          document.cookie = "token="+xhr.getResponseHeader("token");
-          location.href = "./mypage.html";
+          alert('指定されたメールアドレス宛に仮登録完了メールを送信しました。');
         })
         // 検索失敗時には、その旨をダイアログ表示
         .fail(function() {
-          window.alert('メールアドレス or パスワードが間違っています。');
+          window.alert('メールの送信に失敗しました。');
         });
       });
     });
