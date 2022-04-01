@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('config/_head'); %>
+</head>
+<body class="vo-splash">
+  <div class="contents">
+    <div class="logo">
+      <img src="./assets/img/vote-logo-name.png">
+      <p>みんなの投票で決める街のグルメアプリ</p>
+    </div>
+    <div class="vo-form">
+      <div class="vo-form__wrapper">
+        <div class="vo-form__item">
+          <input class="vo-form__mail" type="text" id="email" placeholder="メールアドレス">
+        </div>
+      </div>
+      <button class="vo-button vo-button--primary vo-button--large"><a href="#" id="register">登録</a></button>
+    </div>
+  </div>
+  <script>
+    $(function() {
+      // 登録ボタン押下でメール送信
+      $('#register').click(function() {
+        var email = $('#email').val();
+        $.ajax('https://kensyu.jeez.jp/api/register_mail',
+          {
+            type: 'post',
+            data: { "email" : email },
+            dataType : "json"
+          }
+        )
+        // 検索成功時にはページに結果を反映
+        .done(function(data,status, xhr) {
+          alert('指定されたメールアドレス宛に仮登録完了メールを送信しました。');
+        })
+        // 検索失敗時には、その旨をダイアログ表示
+        .fail(function() {
+          window.alert('メールの送信に失敗しました。');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
